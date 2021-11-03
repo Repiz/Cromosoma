@@ -11,12 +11,12 @@ client.on("messageCreate", (message) => {
         message.delete();
 });
 
-client.on("guildMemberAdd", member =>{
+client.on("guildMemberAdd", member => {
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("Membri: " + member.guild.memberCount)
 });
 
-client.on("guildMemberRemove", member =>{
+client.on("guildMemberRemove", member => {
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("Membri: " + member.guild.memberCount)
 });
