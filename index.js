@@ -4,7 +4,7 @@ const client = new Discord.Client(
 );
 
 
-bot.login(process.env.token);
+client.login("OTA0Nzc0NzIxODU2NDc5MzAz.YYAbHw.xTNy2IvHEHbs4i5VJHsEMjTpL1s");
 
 client.on("messageCreate", (message) => {
     if (message.content == "https://tenor.com/view/sussy-baka-sus-dog-yo-momma-gif-21425378")
