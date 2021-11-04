@@ -6,6 +6,14 @@ const client = new Discord.Client(
 
 client.login('token');
 
+client.on('ready', () => {
+  console.log(`Logged in...`);
+});
+
+client.on('message', msg => {
+  msg.reply('pong');
+});
+
 client.on("messageCreate", (message) => {
     if (message.content == "https://tenor.com/view/sussy-baka-sus-dog-yo-momma-gif-21425378")
         message.delete();
