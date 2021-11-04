@@ -4,19 +4,19 @@ const client = new Discord.Client(
 );
 
 
-client.login(process.env.token);
+client.login("OTA0Nzc0NzIxODU2NDc5MzAz.YYAbHw.-tA2bWNeFz9cTiHpPDY7XIluRn4");
 
 client.on("messageCreate", (message) => {
     if (message.content == "https://tenor.com/view/sussy-baka-sus-dog-yo-momma-gif-21425378")
         message.delete();
 });
 
-client.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", member =>{
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("Membri: " + member.guild.memberCount)
 });
 
-client.on("guildMemberRemove", member => {
+client.on("guildMemberRemove", member =>{
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("Membri: " + member.guild.memberCount)
 });
