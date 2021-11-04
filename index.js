@@ -4,8 +4,6 @@ const client = new Discord.Client(
 );
 
 
-bot.login(process.env.token);
-
 client.on('ready', () => {
   console.log(`Logged in...`);
 });
@@ -29,5 +27,5 @@ client.on("guildMemberRemove", member =>{
     canale.setName("Membri: " + member.guild.memberCount)
 });
 
-
+client.login(process.env.token);
 
