@@ -4,7 +4,7 @@ const client = new Discord.Client(
 );
 
 
-client.login('token');
+bot.login(process.env.token);
 
 client.on('ready', () => {
   console.log(`Logged in...`);
