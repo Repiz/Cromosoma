@@ -23,9 +23,9 @@ client.on("guildMemberRemove", member =>{
 });
 
 
-var messaggi = ["Testa", "Croce"];
 
 client.on ("message", (message) => {
+    var messaggi = ['Testa', 'Croce'];
     if (message.content == ".teocr") {
         var random = Math.floor(Math.random() * messaggi.lenght)
         message.channel.send(messaggi[random] + " " + message.author.toString());
