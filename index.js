@@ -22,12 +22,12 @@ client.on("guildMemberRemove", member =>{
     canale.setName("🦽┊Membri: " + member.guild.memberCount)
 });
 
-
+var messaggi = ["Testa", "Croce"];
+var random = Math.floor(Math.random() * messaggi.lenght);
 
 client.on ("message", (message) => {
-    var messaggi = ['Testa', 'Croce'];
+    
     if (message.content == ".teocr") {
-        var random = Math.floor(Math.random() * messaggi.lenght)
         message.channel.send(messaggi[random] + " " + message.author.toString());
     }
 });
