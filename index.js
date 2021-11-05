@@ -12,24 +12,16 @@ client.on("messageCreate", (message) => {
     }
 });
 
+var botCount = server.member.cache.filter(member => member.user.bot).size;
+
 client.on("guildMemberAdd", member =>{
     var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + member.guild.memberCount)
+    canale.setName("🦽┊Membri: " + (member.guild.memberCount - botCount))
 });
 
 client.on("guildMemberRemove", member =>{
     var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + member.guild.memberCount)
-});
-
-var messaggi = ["Testa", "Croce"];
-var random = Math.floor(Math.random() * messaggi.lenght);
-
-client.on ("message", (message) => {
-    
-    if (message.content == ".teocr") {
-        message.channel.send(messaggi[random] + " " + message.author.toString());
-    }
+    canale.setName("🦽┊Membri: " + (member.guild.memberCount - botCount))
 });
 
 
