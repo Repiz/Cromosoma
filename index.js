@@ -12,20 +12,14 @@ client.on("messageCreate", (message) => {
     }
 });
 
-var server = message.server.guild;
-var botCount = server.member.cache.filter(member => member.user.bot).size;
-var utentiCount = server.memberCount - botCount;
-
 client.on("guildMemberAdd", member =>{
     var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + utentiCount)
+    canale.setName("🦽┊Membri: " + member.guild.memberCount)
 });
 
 client.on("guildMemberRemove", member =>{
     var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + utentiCount)
+    canale.setName("🦽┊Membri: " + member.guild.memberCount)
 });
-
-
 
 
