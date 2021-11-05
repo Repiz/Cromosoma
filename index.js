@@ -23,12 +23,12 @@ client.on("guildMemberRemove", member =>{
 });
 
 
-var messaggitoc = ["Testa", "Croce"];
+var messaggi = ["Testa", "Croce"];
 
 client.on ("message", (message) => {
     if (message.content == ".teocr") {
-        var random = Math.floor(Math.random() * messaggitoc.lenght)
-        message.channel.send(messaggitoc[random] + " " + message.author.toString());
+        var random = Math.floor(Math.random() * messaggi.lenght)
+        message.channel.send(messaggi[random] + " " + message.author.toString());
     }
 });
 
