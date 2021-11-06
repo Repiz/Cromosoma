@@ -12,14 +12,20 @@ client.on("messageCreate", (message) => {
     }
 });
 
-client.on("guildMemberAdd", member => {
+var server = message.member.guild;
+var botCount = server.member.cache.filter(member => member.user.bot).size;
+var utentiCount = server.memberCount - botCount;
+
+client.on("guildMemberAdd", member =>{
     var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + member.guild.memberCount)
+    canale.setName("🦽┊Membri: " + utentiCount)
 });
 
-client.on("guildMemberRemove", member => {
+client.on("guildMemberRemove", member =>{
     var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + member.guild.memberCount)
+    canale.setName("🦽┊Membri: " + utentiCount)
 });
+
+
 
 
