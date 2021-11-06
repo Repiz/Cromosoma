@@ -19,11 +19,19 @@ var utentiCount = server.memberCount - botCount;
 client.on("guildMemberAdd", member =>{
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
+    
+    var canale2 = client.channels.cache.get("906498797637619752")
+    canale2.setName("🤖┊Bots: " + botCount)
+
 });
 
 client.on("guildMemberRemove", member =>{
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
+
+    var canale2 = client.channels.cache.get("906498797637619752")
+    canale2.setName("🤖┊Bots: " + botCount)
+
 });
 
 
