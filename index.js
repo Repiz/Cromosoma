@@ -18,7 +18,7 @@ client.on("message", (message) => {
 
 client.on("guildMemberAdd", member => {
 
-    var utentiCount = server.memberCount - 11;
+    var utentiCount = member.guild.memberCount - 11;
 
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
@@ -27,7 +27,7 @@ client.on("guildMemberAdd", member => {
 
 client.on("guildMemberRemove", member => {
 
-    var utentiCount = server.memberCount - 11;
+    var utentiCount = member.guild.memberCount - 11;
 
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
