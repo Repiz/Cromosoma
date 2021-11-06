@@ -12,6 +12,7 @@ client.on("messageCreate", (message) => {
     }
 });
 
+const message = message;
 var server = message.member.guild;
 var botCount = server.member.cache.filter(member => member.user.bot).size;
 var utentiCount = server.memberCount - botCount;
