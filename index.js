@@ -12,7 +12,7 @@ setInterval(function(){
     var canale = client.channels.cache.get("906952878294441994")
     ytch.getChannelInfo("UCbLFhYI_nmzjK3yBvyPCdnQ")
     .then(response => {
-        canale.setNmae(`🔴┊Iscritti: ${response.subscriberCount}`)
+        canale.setName(`🔴┊Iscritti: ${response.subscriberCount}`)
     })
 }, 1000 * 60)
 
