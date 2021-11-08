@@ -14,7 +14,7 @@ setInterval(function(){
     .then(response => {
         canale.setName(`🔴┊Iscritti: ${response.subscriberCount}`)
     })
-}, 1000 * 60)
+}, 1000 * 900)
 
 
 client.on("message", (message) => {
