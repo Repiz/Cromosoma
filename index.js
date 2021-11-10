@@ -20,9 +20,16 @@ setInterval(function(){
 }, 1000 * 900)
 
 
+client.on("message", (message) =>{
+    if(message.content == "negri"){
+        message.delete();
+    }
+})
+
+
 var embed = new Discord.MessageEmbed()
     .setColor("#ffff00")
-    .setTitle("ID Server vanilla di il_boge")
+    .setTitle("ID Server vanilla di il_BOGE")
     .setURL("https://www.twitch.tv/il_boge")
     .setAuthor("Cromosoma", "https://cdn.discordapp.com/attachments/784431869692870716/904782396577177700/Cromosoma.png")
     .setDescription("L'ID del server vanilla è " + "**" + "futuro id server" + "**")
