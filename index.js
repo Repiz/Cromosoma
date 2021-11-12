@@ -81,7 +81,7 @@ var messaggi = ["Testa", "Croce"];
 client.on("message", (message) => {
     if(message.content == ".teocr") {
         var random = Math.floor(Math.random() * messaggi.length)
-        message.channel.send(message.author.toString() + messaggi[random])
+        message.channel.send("Tra testa o croce è uscito: " + messaggi[random] + "\n" + message.author.toString())
     }
 });
 
