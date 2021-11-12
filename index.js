@@ -4,53 +4,52 @@ const client = new Discord.Client(
 );
 const ytch = require("yt-channel-info");
 
-
 client.login(process.env.token);
 
 client.on("message", (message) => {
 
 })
-
+//counter iscritti
 setInterval(function(){
     var canale = client.channels.cache.get("906952878294441994")
     ytch.getChannelInfo("UCbLFhYI_nmzjK3yBvyPCdnQ")
-    .then(response => {
+    then(response => {
         canale.setName(`🔴┊Iscritti: ${response.subscriberCount}`)
     })
 }, 1000 * 900)
 
-
+//automod
 client.on("message", (message) =>{
     if(message.content == "negri"){
         message.delete();
     }
 })
 
-
+//messaggio id
 var embed = new Discord.MessageEmbed()
-    .setColor("#ffff00")
+    .setColor("#8800f2")
     .setTitle("ID Server vanilla di il_BOGE")
     .setURL("https://www.twitch.tv/il_boge")
     .setAuthor("Cromosoma", "https://cdn.discordapp.com/attachments/784431869692870716/904782396577177700/Cromosoma.png")
     .setDescription("L'ID del server vanilla è " + "**" + "futuro id server" + "**")
     .setThumbnail("https://images-na.ssl-images-amazon.com/images/I/418cEZfh8-L.jpg")
-    .addField("⚠️⚠️ Avvertenza ⚠️⚠️", " Ti ricordo di non condividere questo ID con nessuno, e ripeto nessuno, per evitare spiacevoli conseguenze nel server vanilla. Grazie", true)
+    .addField("⚠️⚠️ Avvertenza ⚠️⚠️", " Ti ricordo di non condividere questo ID con nessuno, e ripeto nessuno, per evitare spiacevoli conseguenze nel server vanilla (coff coff renny coff coff). Grazie", true)
     .setFooter("Hai utilizzato il comando .idvanilla")
     .setTimestamp();
 
-
+//comando id vanilla
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
             message.author.send(embed)
         }
-        else{
-            message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶 renny caro!")
+        else {
+            message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, spendi un po' di cromosomi da https://www.twitch.tv/il_boge!")
         }
     }
 })
 
-
+//counter membri server
 client.on("guildMemberAdd", member => {
 
     var utentiCount = member.guild.memberCount - 11;
@@ -58,8 +57,6 @@ client.on("guildMemberAdd", member => {
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
 })
-
-
 client.on("guildMemberRemove", member => {
 
     var utentiCount = member.guild.memberCount - 11;
@@ -68,4 +65,13 @@ client.on("guildMemberRemove", member => {
     canale.setName("🦽┊Membri: " + utentiCount)
 
 })
+
+//messaggi di benvenuto oppure addio
+
+client.on("guildMemberAdd", (member) => {
+    client.channels.cache.get("894917704610381834").send("Hey " + member.toString + ", benvenuto nel **" + member.guild.name + "**, sei il " + utentiCount + "° membro del server.\n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli")
+})
+
+
+
 
