@@ -69,7 +69,9 @@ client.on("guildMemberRemove", member => {
 //messaggi di benvenuto oppure addio
 
 client.on("guildMemberAdd", (member) => {
-    client.channels.cache.get("894917704610381834").send("Hey " + member.toString + ", benvenuto nel **" + member.guild.name + "**, sei il " + utentiCount + "° membro del server.\n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli")
+    var utentiCount = member.guild.memberCount - 11;
+
+    client.channels.cache.get("894917704610381834").send("Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**, sei il " + utentiCount + "° membro del server. Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli")
 })
 
 
