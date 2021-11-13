@@ -11,13 +11,9 @@ client.on("message", (message) => {
 })
 
 //stato bot
-client.user.setPresence({
-    status: 'online',
-    activity: {
-        name: 'Perdita Cromosomi',
-        type: 'PLAYING'
-    }
-})
+client.user.setActivity("Perdita Cromosomi", {
+    type: "PLAYING"
+  });
 
 
 //counter iscritti
