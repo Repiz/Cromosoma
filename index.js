@@ -11,7 +11,7 @@ client.on("message", (message) => {
 })
 
 //stato bot
-bot.user.setPresence({
+client.user.setPresence({
     status: 'online',
     activity: {
         name: 'Perdita Cromosomi',
