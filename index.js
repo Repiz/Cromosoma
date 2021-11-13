@@ -9,6 +9,11 @@ client.login(process.env.token);
 client.on("message", (message) => {
 
 })
+
+//stato bot
+client.user.setActivity("**Perdita Cromosomi**");
+
+
 //counter iscritti
 setInterval(function(){
     var canale = client.channels.cache.get("906952878294441994")
@@ -71,7 +76,7 @@ client.on("guildMemberRemove", member => {
 client.on("guildMemberAdd", (member) => {
     var utentiCount = member.guild.memberCount - 11;
 
-    client.channels.cache.get("894917704610381834").send("Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**, sei il " + utentiCount + "° membro del server. \n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli")
+    client.channels.cache.get("894917704610381834").send("Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "** \n Sei il **" + utentiCount + "° membro** del server. \n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli! \n Buona permanenza")
 })
 
 //testa o croce
