@@ -96,10 +96,9 @@ client.on("message", (message) => {
         } else {
             var random = Math.floor(Math.random() * messaggi.length)
             message.channel.send("Tra testa o croce è uscito: " + messaggi[random] + "\n" + message.author.toString())
-            
-            cooldown.add(message.author.id);
-        setTimeout(() => {
-            cooldown.delete(message.author)
+            cooldown.add(message.author.id)
+            setTimeout(() => {
+                cooldown.delete(message.author)
         }, 5000);   
             }
         }   
