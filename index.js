@@ -81,7 +81,7 @@ client.on("guildMemberAdd", (member) => {
     var utentiCount = member.guild.memberCount - 11;
     var random = Math.floor(Math.random() * messaggio.length)
 
-    client.channels.cache.get("894917704610381834").send("Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "** \n Sei il **" + utentiCount + "° membro** del server. \n Hai **" + messaggi[random] + "**. \n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli! \n Buona permanenza!")
+    client.channels.cache.get("894917704610381834").send("Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "** \n Sei il **" + utentiCount + "° membro** del server. \n Hai **" + messaggio[random] + "**. \n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli! \n Buona permanenza!")
 })
 
 //testa o croce
