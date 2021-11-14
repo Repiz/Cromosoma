@@ -75,13 +75,13 @@ client.on("guildMemberRemove", member => {
 
 //messaggi di benvenuto oppure addio
 
-var messaggio = ["50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
+var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
 
 client.on("guildMemberAdd", (member) => {
     var utentiCount = member.guild.memberCount - 11;
     var random = Math.floor(Math.random() * messaggio.length)
 
-    client.channels.cache.get("894917704610381834").send("Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "** \n Sei il **" + utentiCount + "° membro** del server. \n Hai **" + messaggio[random] + "**. \n Ti ricordo di passare in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli! \n Buona permanenza!")
+    client.channels.cache.get("894917704610381834").send("👋 Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**.\n🔢 Sei il **" + utentiCount + "° membro** del server.\n😎 Hai **" + messaggio[random] + "**.\n📃 Ti ricordo di **passare** in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli!\n✅ Buona permanenza!")
 })
 
 //testa o croce
