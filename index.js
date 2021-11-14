@@ -3,6 +3,7 @@ const client = new Discord.Client(
     {intents:["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_BANS", "GUILD_VOICE_STATES", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INVITES", "GUILD_VOICE_STATES", "GUILD_PRESENCES", "DIRECT_MESSAGE_TYPING"]}
 );
 const ytch = require("yt-channel-info");
+const cooldown = new Set();
 
 client.login(process.env.token);
 
@@ -84,14 +85,24 @@ client.on("guildMemberAdd", (member) => {
     client.channels.cache.get("894917704610381834").send("👋 Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**.\n🔢 Sei il **" + utentiCount + "° membro** del server.\n😎 Hai **" + messaggio[random] + "**.\n📃 Ti ricordo di **passare** in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli!\n✅ Buona permanenza!")
 })
 
-//testa o croce
+//testa o croce con cooldown
 
 var messaggi = ["Testa", "Croce"];
 
 client.on("message", (message) => {
     if(message.content == ".teocr") {
-        var random = Math.floor(Math.random() * messaggi.length)
-        message.channel.send("Tra testa o croce è uscito: " + messaggi[random] + "\n" + message.author.toString())
+        if(cooldown.has(message.author.id)) {
+            return;}
+        else {
+            var random = Math.floor(Math.random() * messaggi.length)
+            message.channel.send("Tra testa o croce è uscito: " + messaggi[random] + "\n" + message.author.toString())
+            }
+        }
+
+        cooldown.add(message.author.id);
+        setTimeout(() => {
+            cooldown.delete(message.author)
+        }, 5000);
     }
-});
+);
 
