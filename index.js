@@ -92,13 +92,13 @@ var messaggi = ["Testa", "Croce"];
 client.on("message", (message) => {
     if(message.content == ".teocr") {
         if(cooldown.has(message.author.id)) {
-            message.reply("Sei in cooldown");
+            message.reply("Sei in cooldown")
         } else {
             var random = Math.floor(Math.random() * messaggi.length)
             message.channel.send("Tra testa o croce è uscito: " + messaggi[random] + "\n" + message.author.toString())
             cooldown.add(message.author.id)
             setTimeout(() => {
-                cooldown.delete(message.author)
+                cooldown.delete(message.author.id)
         }, 5000);   
             }
         }   
