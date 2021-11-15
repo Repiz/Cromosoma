@@ -114,7 +114,7 @@ client.on("message", message => {
             })
         }
     })
-})
+)
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
     if (user.bot) return
