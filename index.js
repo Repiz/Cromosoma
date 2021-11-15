@@ -110,8 +110,8 @@ client.on("message", (message) => {
 client.on("message", message => {
     if (message.content == ".react") {
         message.fetch(`messageID`).then(message => {
-            message.react(`emoji`);
-          };react("🟫")})
+            message.react(`🟫`);
+          }})
     }
 })
 
