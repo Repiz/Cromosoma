@@ -109,9 +109,7 @@ client.on("message", (message) => {
 
 client.on("message", message => {
     if (message.content == "!reazioni") {
-        client.message.cache.get("894996521265819728") (msg => {
-                msg.react("🟫")
-            })
+        client.message.cache.get("894996521265819728").react("🟫");
     }
 })
 
