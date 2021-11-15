@@ -74,7 +74,7 @@ client.on("guildMemberRemove", member => {
 
 })
 
-//messaggi di benvenuto oppure addio
+//messaggi di benvenuto (oppure addio)
 
 var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
 
@@ -103,4 +103,41 @@ client.on("message", (message) => {
             }
         }   
     });
+
+
+//reaction roles
+
+client.on("message", message => {
+    if (message.content == "!reazioni") {
+        client.message.cache.get("894996521265819728") (msg => {
+                msg.react("🟫")
+            })
+    }
+})
+
+client.on("messageReactionAdd", async function (messageReaction, user) {
+    if (user.bot) return
+
+    if (messageReaction.message.partial) await messageReaction.message.fetch();
+
+    if (messageReaction.message.id == "894996521265819728") {
+        if (messageReaction._emoji.name == "🟫") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.add("793819474582306876");
+        }
+    }
+})
+//Quando viene rimossa una reazione
+client.on("messageReactionRemove", async function (messageReaction, user) {
+    if (user.bot) return
+
+    if (messageReaction.message.partial) await messageReaction.message.fetch();
+
+    if (messageReaction.message.id == "idMessaggio") {
+        if (messageReaction._emoji.name == "🟫") {
+            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
+            utente.roles.remove("793819474582306876");
+        }
+    }
+})
 
