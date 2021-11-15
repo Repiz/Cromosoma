@@ -111,10 +111,10 @@ client.on("message", message => {
     if (message.content == ".react") {
         message.fetch(`894996521265819728`).then(message => {
             message.react(`🟫`);
-            })
-        }
-    })
-
+            }
+        })
+    }
+})
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
     if (user.bot) return
