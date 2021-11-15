@@ -113,7 +113,7 @@ client.on("message", message => {
             message.react(`🟫`);
             })
         }
-    }
+    })
 })
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
