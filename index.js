@@ -109,8 +109,9 @@ client.on("message", (message) => {
 
 client.on("message", message => {
     if (message.content == ".react") {
-        message.fetch(`894996521265819728`).then(message => {
-            message.react(`🟫`);
+        var reazione = message.channel.cache.get("894996521265819728")
+        .then(message => {
+            reazione.react(`🟫`);
             }
         )}
     }
