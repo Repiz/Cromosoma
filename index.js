@@ -109,7 +109,12 @@ client.on("message", (message) => {
 
 client.on("message", message => {
     if (message.content == ".react") {
-        client.channels.cache.get("894915662537957396").react("🟫");
+        var channel = client.channels.cache.get("894915662537957396");
+    
+        .then(msg => {
+            msg.react("🟫")
+        })
+    
     }
 })
 
