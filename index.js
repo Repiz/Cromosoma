@@ -112,7 +112,7 @@ client.on("message", message => {
         message.fetch(`messageID`).then(message => {
             message.react(`🟫`);
             })
-        })
+        }
     }
 })
 
