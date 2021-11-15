@@ -109,7 +109,7 @@ client.on("message", (message) => {
 
 client.on("message", message => {
     if (message.content == ".react") {
-        message.fetch(`messageID`).then(message => {
+        message.fetch(`894996521265819728`).then(message => {
             message.react(`🟫`);
             })
         }
