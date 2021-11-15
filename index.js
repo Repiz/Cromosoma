@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client(
+    { partials: ['MESSAGE', 'CHANNEL', 'REACTION'] }
     {intents:["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_BANS", "GUILD_VOICE_STATES", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INVITES", "GUILD_VOICE_STATES", "GUILD_PRESENCES", "DIRECT_MESSAGE_TYPING"]}
 );
 const ytch = require("yt-channel-info");
