@@ -3,6 +3,7 @@ const client = new Discord.Client(
     {intents:["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_BANS", "GUILD_VOICE_STATES", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INVITES", "GUILD_VOICE_STATES", "GUILD_PRESENCES", "DIRECT_MESSAGE_TYPING"]}
 );
 const ytch = require("yt-channel-info");
+const YouTubeNotifier = require("youtube-notification");
 const cooldown = new Set();
 
 client.login(process.env.token);
@@ -107,15 +108,15 @@ client.on("message", (message) => {
 
 //reaction roles
 
-client.on("message", message => {
+/*client.on("message", message => {
     if (message.content == ".react") {
-        var reazione = client.channel.message.cache.get("894996521265819728")
-        .then(message => {
+        var reazione = client.message.cache.get("894996521265819728")
+        (message => {
             reazione.react(`🟫`);
             }
         )}
     }
-)
+)*/
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
     if (user.bot) return
@@ -143,3 +144,19 @@ client.on("messageReactionRemove", async function (messageReaction, user) {
     }
 })
 
+
+//notifiche yt
+ 
+const notifier = new YouTubeNotifier({
+  hubCallback: "https://www.youtube.com/channel/UCbgPEu-T1zLll8sVXfzqI-A",
+  port: 8080,
+  secret: "Something",
+  path: "/youtube"
+});
+notifier.setup();
+ 
+notifier.on('notified', data => {
+    client.channels.cache.get("833272308671578143").send("${data.channel.name} just uploaded a new video titled: ${data.video.title}")
+});
+ 
+notifier.subscribe('channel_1');
