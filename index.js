@@ -148,15 +148,11 @@ client.on("messageReactionRemove", async function (messageReaction, user) {
 //notifiche yt
  
 const notifier = new YouTubeNotifier({
-  hubCallback: "https://www.youtube.com/channel/UCbgPEu-T1zLll8sVXfzqI-A",
-  port: 8080,
-  secret: "Something",
+  hubCallback: 'https://www.youtube.com/channel/UCbgPEu-T1zLll8sVXfzqI-A',
+  port: 3000,
   path: "/youtube"
 });
 notifier.setup();
- 
 notifier.on('notified', data => {
-    client.channels.cache.get("833272308671578143").send("${data.channel.name} just uploaded a new video titled: ${data.video.title}")
+    client.channels.cache.get("833272308671578143").send('${data.channel.name} just uploaded a new video titled: ${data.video.title}')
 });
- 
-notifier.subscribe('channel_1');
