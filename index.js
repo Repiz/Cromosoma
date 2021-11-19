@@ -148,7 +148,7 @@ client.on("messageReactionRemove", async function (messageReaction, user) {
 //notifiche yt
  
 const notifier = new YouTubeNotifier({
-  hubCallback: 'https://www.youtube.com/channel/UCbgPEu-T1zLll8sVXfzqI-A',
+  hubCallback: 'https://www.youtube.com/channel/UCk9LzAiEoLG4fbW9mk4OXtA',
   port: 3000,
   path: "/youtube"
 });
