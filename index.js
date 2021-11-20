@@ -52,7 +52,7 @@ client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
             var persona = message.author.id;
-            message.author.send(embed).then(client.channels.cache.get("908464001153921064").send("<#" + persona + "> Testo"));
+            message.author.send(embed).then(client.channels.cache.get("908464001153921064").send("<@" + persona + "> Testo"));
         }
         else {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
