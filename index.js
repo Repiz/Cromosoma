@@ -50,7 +50,7 @@ var embed = new Discord.MessageEmbed()
 
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
-        var persona = member.author;
+        var persona = message.member.author;
     }
 });
 
