@@ -55,7 +55,7 @@ client.on("message", (message) => {
             var data = new Date();
             var ore = data.getHours();
             var minuti = data.getMinutes();
-            message.author.send(embed).then(client.channels.cache.get("908464001153921064").send("Da questo momento, ore " + ore + ":" + minuti + " <@" + persona + "> **ha accesso** all'id del server vanilla.\nSperiamo bene...😔"));
+            message.author.send(embed).then(client.channels.cache.get("908464001153921064").send("Da questo momento, ore " + ore + ":" + minuti + ", <@" + persona + "> **ha accesso** all'id del server vanilla.\nSperiamo bene... 😔"));
         }
         else {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
