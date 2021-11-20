@@ -51,7 +51,7 @@ var embed = new Discord.MessageEmbed()
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
-            var persona = message.author;
+            var persona = message.author.id;
             message.author.send(embed).then(client.channels.cache.get("908464001153921064").send(persona.toString + "Testo"));
         }
         else {
