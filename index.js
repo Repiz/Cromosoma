@@ -113,15 +113,12 @@ client.on("message", (message) => {
 
 //reaction roles
 
-/*client.on("message", message => {
+client.on("message", message => {
     if (message.content == ".react") {
-        var reazione = client.message.cache.get("894996521265819728")
-        (message => {
-            reazione.react(`🟫`);
-            }
-        )}
+        client.message.cache.get("894996521265819728").react(`🟫`);
+        }
     }
-)*/
+)
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
     if (user.bot) return
