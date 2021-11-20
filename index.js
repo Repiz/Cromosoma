@@ -115,7 +115,8 @@ client.on("message", (message) => {
 
 client.on("message", message => {
     if (message.content == ".react") {
-        client.channels.cache.get("894915662537957396").react(`🟫`);
+        var msgreact = message.id.cache.get("894915662537957396")
+        msgreact.react(`🟫`);
         }
     }
 )
