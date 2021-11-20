@@ -50,7 +50,7 @@ var embed = new Discord.MessageEmbed()
 
 client.on("message", async (message) => {
     if(message.content == ".idvanilla"){
-        const {member} = numero;
+        var {member} = numero;
     }
 });
 
