@@ -47,10 +47,17 @@ var embed = new Discord.MessageEmbed()
     .setTimestamp();
 
 //comando id vanilla
+
+client.on("message", async (message) => {
+    if(message.content == ".idvanilla"){
+        const {member} = numero;
+    }
+});
+
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
-            message.author.send(embed).then(client.channels.cache.get("833272308671578143").send(message.author.toString + "Testo"));
+            message.author.send(embed).then(client.channels.cache.get("833272308671578143").send(numero + "Testo"));
         }
         else {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
