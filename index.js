@@ -50,7 +50,7 @@ var embed = new Discord.MessageEmbed()
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
-            message.author.send(embed).then(client.channels.cache.get("908464001153921064").send(message.author.toString + "Testo"));
+            message.author.send(embed).then(client.channels.cache.get("833272308671578143").send(message.author.toString + "Testo"));
         }
         else {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
