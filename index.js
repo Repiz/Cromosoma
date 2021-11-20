@@ -15,7 +15,7 @@ client.on("message", (message) => {
 //stato bot
 client.on("ready", () => { 
     client.user.setStatus("online");
-    client.user.setActivity('Come perdere cromosomi 100% vero no clickbait', { type: "WATCHING"})
+    client.user.setActivity('Come perdere cromosomi 100% vero no clickbait', { type: "LISTENING"})
 })
 
 //counter iscritti
@@ -114,9 +114,8 @@ client.on("message", (message) => {
 //reaction roles
 
 client.on("message", message => {
-    if (message.content == ".react") {
-        var msgreact = message.id.cache.get("894915662537957396")
-        msgreact.react(`🟫`);
+    if(message.content.includes("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi")) { 
+        message.channel.react("🟫");
         }
     }
 )
