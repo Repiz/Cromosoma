@@ -58,6 +58,8 @@ client.on("message", (message) => {
 
     if(embed){
         client.channels.cache.get("833272308671578143").send("Funziona");
+    } else{
+        return;
     }
     }
 })
