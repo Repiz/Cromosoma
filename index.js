@@ -15,7 +15,7 @@ client.on("message", (message) => {
 //stato bot
 client.on("ready", () => { 
     client.user.setStatus("online");
-    client.user.setActivity('Perdita Cromosomi', { type: "PLAYING"})
+    client.user.setActivity('Come perdere cromosomi 100% vero no clickbait', { type: "WATCHING"})
 })
 
 //counter iscritti
@@ -34,7 +34,7 @@ client.on("message", (message) =>{
     }
 })
 
-//messaggio id
+//definizione messaggio id vaniala
 var embed = new Discord.MessageEmbed()
     .setColor("#8800f2")
     .setTitle("ID Server vanilla di il_BOGE")
@@ -53,8 +53,12 @@ client.on("message", (message) => {
             message.author.send(embed)
         }
         else {
-            message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, spendi un po' di cromosomi da https://www.twitch.tv/il_boge!")
+            message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
         }
+
+    if(message.author.send(embed)){
+        client.channels.cache.get("833272308671578143").send("Funziona");
+    }
     }
 })
 
@@ -143,7 +147,6 @@ client.on("messageReactionRemove", async function (messageReaction, user) {
         }
     }
 })
-
 
 //notifiche yt
  
