@@ -56,7 +56,7 @@ client.on("message", (message) => {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
         }
 
-    if(message.author.send(embed)){
+    if(embed){
         client.channels.cache.get("833272308671578143").send("Funziona");
     }
     }
