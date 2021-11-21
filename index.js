@@ -118,10 +118,11 @@ client.on("message", (message) => {
 //reaction roles
 
 client.on("message", message => {
-    if(message.content.includes("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi")) { 
-        message.channel.react("🟫");
+    Channel.messages.fetch("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi").then(react("🟫"));
+    
+    /*if(message.content.includes("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi")) { 
+        message.channel.react("🟫");*/
         }
-    }
 )
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
