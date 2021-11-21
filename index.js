@@ -30,7 +30,7 @@ setInterval(function(){
 //automod (speriamo funzioni)
 
 client.on("message", (message) =>{
-    if(message.content.includes("porco dio")){
+    if(message.content.includes("negri"||"porco dio")){
         message.delete();
     } else{
         return;
