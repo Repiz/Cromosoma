@@ -29,7 +29,7 @@ setInterval(function(){
 
 //automod
 client.on("message", (message) =>{
-    if(message.content == "negri"){
+    if(message.content.includes("negri") || ("porco dio")) {
         message.delete();
     }
 })
@@ -54,7 +54,7 @@ client.on("message", (message) => {
             var persona = message.author.id;
             var data = new Date();
             var ore = data.getHours();
-            var minuti = data.getMinutes();
+            var minuti = data.getMinutes(); //messaggio in #automod per vedere chi ha accesso all'id
             message.author.send(embed).then(client.channels.cache.get("908464001153921064").send("Da questo momento, ore " + ore + ":" + minuti + ", <@" + persona + "> **ha accesso** all'id del server vanilla.\nSperiamo bene... 😔"));
         }
         else {
@@ -66,14 +66,14 @@ client.on("message", (message) => {
 //counter membri server
 client.on("guildMemberAdd", member => {
 
-    var utentiCount = member.guild.memberCount - 11;
+    var utentiCount = member.guild.memberCount - 10;
 
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
 })
 client.on("guildMemberRemove", member => {
 
-    var utentiCount = member.guild.memberCount - 11;
+    var utentiCount = member.guild.memberCount - 10;
 
     var canale = client.channels.cache.get("905510008010178590")
     canale.setName("🦽┊Membri: " + utentiCount)
@@ -85,7 +85,7 @@ client.on("guildMemberRemove", member => {
 var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
 
 client.on("guildMemberAdd", (member) => {
-    var utentiCount = member.guild.memberCount - 11;
+    var utentiCount = member.guild.memberCount - 10;
     var random = Math.floor(Math.random() * messaggio.length)
 
     client.channels.cache.get("894917704610381834").send("👋 Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**.\n🔢 Sei il **" + utentiCount + "° membro** del server.\n😎 Hai **" + messaggio[random] + "**.\n📃 Ti ricordo di **passare** in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli!\n✅ Buona permanenza!")
@@ -146,7 +146,7 @@ client.on("messageReactionRemove", async function (messageReaction, user) {
     }
 })
 
-//notifiche yt
+//notifiche yt (prova)
  
 const notifier = new YouTubeNotifier({
   hubCallback: 'https://www.youtube.com/c/Mark3s',
