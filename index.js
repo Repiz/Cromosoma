@@ -116,14 +116,13 @@ client.on("message", (message) => {
 
 
 //reaction roles
-
-client.on("message", message => {
+/*client.on("message", (message) => {
     Channel.messages.fetch("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi").then(react("🟫"));
     
-    /*if(message.content.includes("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi")) { 
-        message.channel.react("🟫");*/
-        }
-)
+    if(message.content.includes("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi")) { 
+        message.channel.react("🟫");
+    });
+
 
 client.on("messageReactionAdd", async function (messageReaction, user) {
     if (user.bot) return
@@ -149,7 +148,7 @@ client.on("messageReactionRemove", async function (messageReaction, user) {
             utente.roles.remove("793819474582306876");
         }
     }
-})
+})*/
 
 //notifiche yt (prova)
  
