@@ -27,6 +27,17 @@ setInterval(function(){
     })
 }, 1000 * 900)
 
+//automod (speriamo funzioni)
+
+client.on("message", (message) =>{
+    if(message.content.includes("negri")){
+        message.delete();
+    } else{
+        return;
+    }
+})
+
+
 //definizione messaggio id vaniala
 var embed = new Discord.MessageEmbed()
     .setColor("#8800f2")
