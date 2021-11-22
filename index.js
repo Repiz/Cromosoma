@@ -177,12 +177,10 @@ client.on("clickMenu", (menu) => {
 
         if(!message.member.hasPermission("KICK_MEMBERS")) {
             message.channel.send("Cosa vuoi fare senza diritti?");
-            return;
         }
 
         if(!message.member.hasPermission("MANAGE_ROLES")) {
             message.channel.send("Cosa vuoi fare senza diritti?");
-            return;
         }
 
         if(menu.values[0] == "opzione1") {
