@@ -128,6 +128,11 @@ client.on("message", (message) => {
             return;
         }
 
+        if(!message.member.hasPermission("MANAGE_ROLES")) {
+            message.channel.send("Cosa vuoi fare senza diritti?");
+            return;
+        }
+
         if(!utenteKick) {
             message.channel.send("Magari tagga qualcuno")
             return;
@@ -169,6 +174,17 @@ client.on("message", (message) => {
 client.on("clickMenu", (menu) => {
     if (menu.id == "menu") {
         menu.reply.defer()
+
+        if(!message.member.hasPermission("KICK_MEMBERS")) {
+            message.channel.send("Cosa vuoi fare senza diritti?");
+            return;
+        }
+
+        if(!message.member.hasPermission("MANAGE_ROLES")) {
+            message.channel.send("Cosa vuoi fare senza diritti?");
+            return;
+        }
+
         if(menu.values[0] == "opzione1") {
             utenteKick.roles.add("895734870377127946")
                 .then(() => message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
