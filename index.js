@@ -176,25 +176,25 @@ client.on("clickMenu", (menu) => {
         menu.reply.defer()
 
         if(!message.member.hasPermission("KICK_MEMBERS")) {
-            message.channel.send("Cosa vuoi fare senza diritti?");
+            menu.message.channel.send("Cosa vuoi fare senza diritti?");
         }
 
         if(!message.member.hasPermission("MANAGE_ROLES")) {
-            message.channel.send("Cosa vuoi fare senza diritti?");
+            menu.message.channel.send("Cosa vuoi fare senza diritti?");
         }
 
         if(menu.values[0] == "opzione1") {
             utenteKick.roles.add("895734870377127946")
-                .then(() => message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
+                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
         }
         if(menu.values[0] == "opzione2") {
             utenteKick.kick()
-                .then(() => message.channel.send("<@" + utenteKick + "> è stato espulso dal server. F"))
+                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato espulso dal server. F"))
         }
 
         if(menu.values[0] == "opzione3") {
             utenteKick.ban()
-                .then(() => message,channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
+                .then(() => menu.message,channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
         }
     }
 })
