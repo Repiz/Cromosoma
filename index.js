@@ -189,7 +189,7 @@ client.on("clickMenu", (menu) => {
                 .then(() => menu.message,channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
         }
     }
-})
+});
 
 
 //reaction roles
