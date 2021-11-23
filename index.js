@@ -175,14 +175,6 @@ client.on("clickMenu", (menu) => {
     if (menu.id == "menu") {
         menu.reply.defer()
 
-        if(!message.member.hasPermission("KICK_MEMBERS")) {
-            menu.message.channel.send("Cosa vuoi fare senza diritti?");
-        }
-
-        if(!message.member.hasPermission("MANAGE_ROLES")) {
-            menu.message.channel.send("Cosa vuoi fare senza diritti?");
-        }
-
         if(menu.values[0] == "opzione1") {
             utenteKick.roles.add("895734870377127946")
                 .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
