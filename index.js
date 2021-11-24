@@ -7,13 +7,10 @@ const YouTubeNotifier = require("youtube-notification");
 const disbut = require("discord-buttons");
 disbut(client);
 const { MessageMenuOption, MessageMenu } = require("discord-buttons");
+const { MessageButton, MessageActionRow } = require("discord-buttons");
 const cooldown = new Set();
 
 client.login(process.env.token);
-
-client.on("message", (message) => {
-
-})
 
 //stato bot
 client.on("ready", () => { 
@@ -173,12 +170,14 @@ client.on("message", (message) => {
 
 client.on("clickMenu", (menu) => {
     if (menu.id == "menu") {
+        
         menu.reply.defer()
 
         if(menu.values[0] == "opzione1") {
             utenteKick.roles.add("895734870377127946")
                 .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
         }
+        
         if(menu.values[0] == "opzione2") {
             utenteKick.kick()
                 .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato espulso dal server. F"))
@@ -186,10 +185,30 @@ client.on("clickMenu", (menu) => {
 
         if(menu.values[0] == "opzione3") {
             utenteKick.ban()
-                .then(() => menu.message,channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
+                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
         }
     }
 });
+
+//bottone benvenuto con reaction roles
+
+client.on("message", (message) => {
+    if(message.content == ".eureca") {
+
+        var botruoli = new MessageButton()
+            .setLabel("Clicca per i ruoli")
+            .setStyle("red")
+            .setID("benvenuto")
+
+            message.channel.send("Prova", botruoli)
+    }
+})
+
+client.on("clickButton", button => {
+    if(button.id == "benvenuto") {
+        button.reply.send("Testo con le reazioni", true)
+    }
+})
 
 
 //reaction roles
