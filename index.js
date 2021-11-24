@@ -195,21 +195,38 @@ client.on("clickMenu", (menu) => {
 client.on("message", (message) => {
     if(message.content == ".eureca") {
 
-        var botruoli = new MessageButton()
+        var nuovoarrivato = message.author.id;
+
+        var botruolo1 = new MessageButton()
             .setLabel("Clicca per i ruoli")
             .setStyle("red")
-            .setID("benvenuto")
+            .setID("generale")
+            .setEmoji("🌐")
+        
+        var botruolo2 = new MessageButton()
+            .setLabel("Clicca per i ruoli")
+            .setStyle("green")
+            .setID("social")
+            .setEmoji("👥")
 
-            message.channel.send("Prova", botruoli)
+        var botruolo3 = new MessageButton()
+            .setLabel("Clicca per i ruoli")
+            .setStyle("blurple")
+            .setID("gaming")
+            .setEmoji("🎮")
+
+        var row = new MessageActionRow()
+            .addComponent(botruolo1)
+            .addComponent(botruolo2)
+            .addComponent(botruolo3)
+
+            message.channel.send("Prova", row)
     }
 })
 
-client.on("clickButton", button => {
-    if(button.id == "benvenuto") {
-        button.reply.send("Testo con le reazioni", true)
-            .then(message => {
-                button.reply.message.react("🎮")
-            })
+client.on("clickButton", (button) => {
+    if (button.id == "generale") {
+        nuovoarrivato.roles.add("789467557433180221")
     }
 })
 
