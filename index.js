@@ -208,7 +208,7 @@ client.on("clickButton", button => {
     if(button.id == "benvenuto") {
         button.reply.send("Testo con le reazioni", true)
             .then(message => {
-                button.message.react("🎮")
+                button.reply.message.react("🎮")
             })
     }
 })
