@@ -225,7 +225,7 @@ client.on("message", (message) => {
 client.on("clickButton", (button) => {
     if (button.id == "generale") {
         button.reply.defer()
-        button.author.roles.add("789467557433180221");
+        button.clicker.member.roles.add("789467557433180221");
     }
 })
 
