@@ -196,19 +196,19 @@ client.on("message", (message) => {
     if(message.content == ".eureca") {
 
         var botruolo1 = new MessageButton()
-            .setLabel("Clicca per i ruoli")
+            .setLabel("Cromosoma Semplice")
             .setStyle("red")
             .setID("generale")
             .setEmoji("🌐")
         
         var botruolo2 = new MessageButton()
-            .setLabel("Clicca per i ruoli")
+            .setLabel("Cromosoma Sociale")
             .setStyle("green")
             .setID("social")
             .setEmoji("👥")
 
         var botruolo3 = new MessageButton()
-            .setLabel("Clicca per i ruoli")
+            .setLabel("Cromosoma Gamer")
             .setStyle("blurple")
             .setID("gaming")
             .setEmoji("🎮")
@@ -218,7 +218,7 @@ client.on("message", (message) => {
             .addComponent(botruolo2)
             .addComponent(botruolo3)
 
-            message.channel.send("Prova", row)
+            message.channel.send("Scegli il/i ruolo/i", row)
     }
 })
 
@@ -226,6 +226,16 @@ client.on("clickButton", (button) => {
     if (button.id == "generale") {
         button.reply.defer()
         button.clicker.member.roles.add("789467557433180221");
+    }
+
+    if (button.id == "social") {
+        button.reply.defer()
+        button.clicker.member.roles.add("893801930508365866");
+    }
+
+    if (button.id == "gaming") {
+        button.reply.defer()
+        button.clicker.member.roles.add("893802104479703081");
     }
 })
 
