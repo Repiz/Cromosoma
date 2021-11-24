@@ -192,10 +192,9 @@ client.on("clickMenu", (menu) => {
 
 //bottone benvenuto con reaction roles
 
-client.on("message", (message) => {
-    if(message.content == ".speriamofunzioni") {
+client.on("clickButton", (button) => {
 
-        var botruolo1 = new MessageButton()
+    var botruolo1 = new MessageButton()
             .setLabel("Cromosoma Semplice")
             .setStyle("red")
             .setID("generale")
@@ -218,11 +217,6 @@ client.on("message", (message) => {
             .addComponent(botruolo2)
             .addComponent(botruolo3)
 
-            message.channel.send("**Ciao e benvenuto** nel server di <@448212668143370240>!\nEcco le **regole** da rispettare se volete far parte del server e divertirvi con altre persone in allegria:\n\n• **Rispetta tutti gli utenti** nel server, insieme ci si diverte di più, insultandosi no;\n• **Non usare parolacce o bestemmie**;\n• **Usa i canali per il loro scopo** in base al nome che hanno, quali canali ti starai chiedendo, CON CALMA...\n• **Non spammare** messaggi, gif, foto, ecc...\n\nOra che sai le regole passiamo al **funzionamento**.\n**Schiaccia i bottoni** in modo da ottenere i ruoli per **aver accesso** ai canali del server, che si dividono in **3 principali categorie**: generale (🌐 = <@&789467557433180221>), community (👥 = <@&893801930508365866>) e gaming (🎮 = <@&893802104479703081>).\n- La **prima** ti dà accesso ai canali generali per parlare e memare con la gente e partecipare come popolo alle elezioni.\n- La **seconda** ti permette di rimanere aggiornato su ciò che i Content Creator fanno (live, video, eventi in generale) e di poter condividere con loro clip.\n- L'**ultima** è dedicata - ma va? - al gaming. Schiacciando quel bottone potrai vedere, oltre a i canali principali, un altro canale (<#894915662537957396>) dove puoi scegliere i ruoli dei videogames a cui giochi per vedere i canali a loro dedicati.", row)
-    }
-})
-
-client.on("clickButton", (button) => {
     if (button.id == "generale") {
         button.reply.defer()
         button.clicker.member.roles.add("789467557433180221");
