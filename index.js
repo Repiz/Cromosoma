@@ -195,7 +195,7 @@ client.on("clickMenu", (menu) => {
 client.on("message", (message) => {
     if(message.content == ".eureca") {
 
-        var nuovoarrivato = message.author.id;
+        var nuovoarrivato = message.author;
 
         var botruolo1 = new MessageButton()
             .setLabel("Clicca per i ruoli")
@@ -227,7 +227,7 @@ client.on("message", (message) => {
 client.on("clickButton", (button) => {
     if (button.id == "generale") {
         button.reply.defer()
-        nuovoarrivato.roles.add("789467557433180221")
+        nuovoarrivato.roles.add("789467557433180221");
     }
 })
 
