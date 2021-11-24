@@ -226,6 +226,7 @@ client.on("message", (message) => {
 
 client.on("clickButton", (button) => {
     if (button.id == "generale") {
+        button.reply.defer()
         nuovoarrivato.roles.add("789467557433180221")
     }
 })
