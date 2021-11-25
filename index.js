@@ -266,7 +266,8 @@ client.on("clickButton", (button) => {
 
 client.on("clickButton", (button) => {
     if (button.id == "bottoneticket") {
-        var server = button.message.channel.guild;
+        button.reply.defer()
+        var server = button.channel.guild;
         if (server.channels.cache.find(canale => canale.topic == `User ID: ${user.id}`)) {
             button.reply.send("Hai già creato un ticket", true)
             return
