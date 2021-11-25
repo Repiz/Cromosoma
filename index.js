@@ -29,81 +29,49 @@ setInterval(function(){
 
 //automod (speriamo funzioni)
 
-client.on("message", (message) =>{
+/*client.on("message", (message) =>{
     if(message.content.includes("negri"||"porco dio")){
         message.delete();
     } else{
         return;
     }
-})
+})*/
 
-
-//definizione messaggio id vaniala
-var embed = new Discord.MessageEmbed()
-    .setColor("#8800f2")
-    .setTitle("ID Server vanilla di il_BOGE")
-    .setURL("https://www.twitch.tv/il_boge")
-    .setAuthor("Cromosoma", "https://cdn.discordapp.com/attachments/784431869692870716/904782396577177700/Cromosoma.png")
-    .setDescription("L'ID del server vanilla è " + "**" + "futuro id server" + "**")
-    .setThumbnail("https://images-na.ssl-images-amazon.com/images/I/418cEZfh8-L.jpg")
-    .addField("⚠️⚠️ Avvertenza ⚠️⚠️", " Ti ricordo di non condividere questo ID con nessuno, e ripeto nessuno, per evitare spiacevoli conseguenze nel server vanilla (coff coff renny coff coff). Grazie", true)
-    .setFooter("Hai utilizzato il comando .idvanilla")
-    .setTimestamp();
-
-//comando id vanilla
+//comando id vanilla, testa o croce
 
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
             var persona = message.author.id;
+            //definizione messaggio id vaniala
+            var embed = new Discord.MessageEmbed()
+                .setColor("#8800f2")
+                .setTitle("ID Server vanilla di il_BOGE")
+                .setURL("https://www.twitch.tv/il_boge")
+                .setAuthor("Cromosoma", "https://cdn.discordapp.com/attachments/784431869692870716/904782396577177700/Cromosoma.png")
+                .setDescription("L'ID del server vanilla è " + "**" + "futuro id server" + "**")
+                .setThumbnail("https://images-na.ssl-images-amazon.com/images/I/418cEZfh8-L.jpg")
+                .addField("⚠️⚠️ Avvertenza ⚠️⚠️", " Ti ricordo di non condividere questo ID con nessuno, e ripeto nessuno, per evitare spiacevoli conseguenze nel server vanilla (coff coff renny coff coff). Grazie", true)
+                .setFooter("Hai utilizzato il comando .idvanilla")
+                .setTimestamp();
+            
             var data = new Date();
             var ore = data.getHours();
-            var minuti = data.getMinutes(); //messaggio in #automod per vedere chi ha accesso all'id
+            var minuti = data.getMinutes();
+
+            //messaggio in #automod per vedere chi ha accesso all'id
             message.author.send(embed).then(client.channels.cache.get("908464001153921064").send("Da questo momento, ore " + ore + ":" + minuti + ", <@" + persona + "> **ha accesso** all'id del server vanilla.\nSperiamo bene... 😔"));
         }
         else {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
         }
     }
-})
-
-//counter membri server
-client.on("guildMemberAdd", member => {
-
-    var utentiCount = member.guild.memberCount - 10;
-
-    var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + utentiCount)
-})
-client.on("guildMemberRemove", member => {
-
-    var utentiCount = member.guild.memberCount - 10;
-
-    var canale = client.channels.cache.get("905510008010178590")
-    canale.setName("🦽┊Membri: " + utentiCount)
-
-})
-
-//messaggi di benvenuto (oppure addio)
-
-var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
-
-client.on("guildMemberAdd", (member) => {
-    var utentiCount = member.guild.memberCount - 10;
-    var random = Math.floor(Math.random() * messaggio.length)
-
-    client.channels.cache.get("894917704610381834").send("👋 Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**.\n🔢 Sei il **" + utentiCount + "° membro** del server.\n😎 Hai **" + messaggio[random] + "**.\n📃 Ti ricordo di **passare** in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli!\n✅ Buona permanenza!")
-})
-
-//testa o croce con cooldown
-
-var messaggi = ["Testa", "Croce"];
-
-client.on("message", (message) => {
+    //testa o croce
     if(message.content == ".teocr") {
         if(cooldown.has(message.author.id)) {
             return;
         } else {
+            var messaggi = ["Testa", "Croce"];
             var random = Math.floor(Math.random() * messaggi.length)
             message.channel.send("Tra testa o croce è uscito: " + messaggi[random] + "\n" + message.author.toString())
             cooldown.add(message.author.id)
@@ -111,8 +79,34 @@ client.on("message", (message) => {
                 cooldown.delete(message.author.id)
         }, 5000);   
             }
-        }   
-    });
+        }
+})
+
+//counter membri server, messaggi di benvenuto e messaggi quando qualcuno esce dal server
+
+var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
+
+client.on("guildMemberAdd", (member) => {
+    //counter +
+    var utentiCount = member.guild.memberCount - 10;
+    var canale = client.channels.cache.get("905510008010178590")
+
+    canale.setName("🦽┊Membri: " + utentiCount)
+    //messaggio di benvenuto
+    var random = Math.floor(Math.random() * messaggio.length)
+
+    client.channels.cache.get("894917704610381834").send("👋 Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**.\n🔢 Sei il **" + utentiCount + "° membro** del server.\n😎 Hai **" + messaggio[random] + "**.\n📃 Ti ricordo di **passare** in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli!\n✅ Buona permanenza!")
+})
+
+client.on("guildMemberRemove", member => {
+    //counter -
+    var utentiCount = member.guild.memberCount - 10;
+    var canale = client.channels.cache.get("905510008010178590")
+
+    canale.setName("🦽┊Membri: " + utentiCount)
+
+    client.channels.cache.get("908464001153921064").send(member.toString + "è uscito dal server. Pensa che scarso!")
+})
 
 //menu per la moderazione
 
