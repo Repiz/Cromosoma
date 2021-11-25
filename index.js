@@ -114,7 +114,7 @@ client.on("message", (message) => {
         var ticketembed = new Discord.MessageEmbed()
             .setColor("#1e9498")
             .setTitle("Crea un ticket se ti serve aiuto 📨")
-            .setDescription("Clicca sul bottone qui sotto per creare un canale privato in cui chiedere informazioni riguardo discord o in generale")
+            .setDescription("Clicca sul bottone qui sotto per creare un canale privato in cui chiedere informazioni riguardo discord o in generale.\nPuoi aprire un **solo ticket** alla volta!")
             .setThumbnail("https://iltuotecnico.online/wp-content/uploads/2019/10/immagineticket.png")
             .setFooter("📨 TICKET 📨")
             .setTimestamp();
@@ -122,7 +122,7 @@ client.on("message", (message) => {
         var ticketbutton = new MessageButton()
             .setLabel("Clicca per il ticket")
             .setStyle("blurple")
-            .setID("bottone")
+            .setID("bottoneticket")
             .setEmoji("📨")
 
         message.channel.send(ticketembed, ticketbutton)
@@ -210,7 +210,8 @@ client.on("clickMenu", (menu) => {
 
 client.on("clickButton", (button) => {
 
-    var botruolo1 = new MessageButton()
+        //ruoli
+        var botruolo1 = new MessageButton()
             .setLabel("Cromosoma Semplice")
             .setStyle("red")
             .setID("generale")
@@ -228,6 +229,7 @@ client.on("clickButton", (button) => {
             .setID("gaming")
             .setEmoji("🎮")
 
+        //i 3 ruoli
         var row = new MessageActionRow()
             .addComponent(botruolo1)
             .addComponent(botruolo2)
@@ -261,6 +263,131 @@ client.on("clickButton", (button) => {
     }
 })
 
+
+client.on("clickButton", (button) => {
+    if (button.id == "bottoneticket") {
+        var server = button.message.channel.guild;
+        if (server.channels.cache.find(canale => canale.topic == `User ID: ${user.id}`)) {
+            button.reply.send("Hai già creato un ticket", true)
+            return
+        }
+
+        server.channels.create(user.username, {
+            type: "text"
+        }).then(canale => {
+            canale.setTopic(`User ID: ${user.id}`);
+            canale.setParent("913527186206629929") 
+            canale.overwritePermissions([
+                {
+                    id: server.id,
+                    deny: ["VIEW_CHANNEL"]
+                },
+                {
+                    id: user.id,
+                    allow: ["VIEW_CHANNEL"]
+                },
+                {
+                    id: 893736035664662598,
+                    allow: ["VIEW_CHANNEL"]
+                }
+            ])
+            canale.send("Grazie per aver creato un ticket")
+        })
+}})
+
+client.on("message", message => {
+    if (message.content == ".chiudi") {
+        var topic = message.channel.topic;
+        if (!topic) {
+            message.channel.send("Non puoi utilizzare questo comando!");
+            return
+        }
+
+        if (topic.startsWith("User ID:")) {
+            var idUtente = topic.slice(9);
+            if (message.author.id == idUtente || message.member.hasPermission("MANAGE_CHANNELS")) {
+                message.channel.delete();
+            }
+        }
+        else {
+            message.channel.send("Non puoi utilizzare questo comando!")
+        }
+    }
+
+    if (message.content.startsWith(".aggiungi")) {
+        var topic = message.channel.topic;
+        if (!topic) {
+            message.channel.send("Non puoi utilizzare questo comando!");
+            return
+        }
+
+        if (topic.startsWith("User ID:")) {
+            var idUtente = topic.slice(9);
+            if (message.author.id == idUtente || message.member.hasPermission("MANAGE_CHANNELS")) {
+                var utente = message.mentions.members.first();
+                if (!utente) {
+                    message.channel.send("Inserire un utente valido magari!");
+                    return
+                }
+
+                var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
+
+                if (haIlPermesso) {
+                    message.channel.send("Questo utente ha già accesso al ticket!")
+                    return
+                }
+
+                message.channel.updateOverwrite(utente, {
+                    VIEW_CHANNEL: true
+                })
+
+                message.channel.send(`${utente.toString()} è stato aggiunto al ticket`)
+            }
+        }
+        else {
+            message.channel.send("Non puoi utilizzare questo comando!")
+        }
+    }
+    if (message.content.startsWith(".rimuovi")) {
+        var topic = message.channel.topic;
+        if (!topic) {
+            message.channel.send("Non puoi utilizzare questo comando!");
+            return
+        }
+
+        if (topic.startsWith("User ID:")) {
+            var idUtente = topic.slice(9);
+            if (message.author.id == idUtente || message.member.hasPermission("MANAGE_CHANNELS")) {
+                var utente = message.mentions.members.first();
+                if (!utente) {
+                    message.channel.send("Inserire un utente valido magari!");
+                    return
+                }
+
+                var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
+
+                if (!haIlPermesso) {
+                    message.channel.send("Non puoi rimuovere questo utente dal ticket!")
+                    return
+                }
+
+                if (utente.hasPermission("MANAGE_CHANNELS")) {
+                    message.channel.send("Non puoi rimuovere questo utente dal ticket!")
+                    return
+                }
+
+                message.channel.updateOverwrite(utente, {
+                    VIEW_CHANNEL: false
+                })
+
+                message.channel.send(`${utente.toString()} è stato rimosso al ticket`)
+            }
+        }
+        else {
+            message.channel.send("Non puoi utilizzare questo comando!")
+        }
+    }
+})
 
 //reaction roles
 /*client.on("message", (message) => {
