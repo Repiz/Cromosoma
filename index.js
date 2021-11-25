@@ -108,6 +108,28 @@ client.on("guildMemberRemove", member => {
     client.channels.cache.get("908464001153921064").send(member.toString + "è uscito dal server. Pensa che scarso!")
 })
 
+
+client.on("message", (message) => {
+    if(message.content == ".ticketspawn") {
+        var ticketembed = new Discord.MessageEmbed()
+            .setColor("#1e9498")
+            .setTitle("Crea un ticket se ti serve aiuto 📨")
+            .setDescription("Clicca sul bottone qui sotto per creare un canale privato in cui chiedere informazioni riguardo discord o in generale")
+            .setThumbnail("https://iltuotecnico.online/wp-content/uploads/2019/10/immagineticket.png")
+            .setFooter("📨 TICKET 📨")
+            .setTimestamp();
+
+        var ticketbutton = new MessageButton()
+            .setLabel("Clicca per il ticket")
+            .setStyle("blurple")
+            .setID("bottone")
+            .setEmoji("📨")
+
+        message.channel.send(ticketembed, ticketbutton)
+    }
+
+})
+
 //menu per la moderazione
 
 /*client.on("message", (message) => {
