@@ -116,7 +116,7 @@ client.on("message", (message) => {
 
 //menu per la moderazione
 
-client.on("message", (message) => {
+/*client.on("message", (message) => {
     if(message.content.startsWith(".mod")) {
         var utenteKick = message.mentions.members.first();
 
@@ -188,7 +188,7 @@ client.on("clickMenu", (menu) => {
                 .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
         }
     }
-});
+});*/
 
 //bottone benvenuto con reaction roles
 
@@ -219,17 +219,29 @@ client.on("clickButton", (button) => {
 
     if (button.id == "generale") {
         button.reply.defer()
-        button.clicker.member.roles.add("789467557433180221");
+        if(button.clicker.member.roles.cache.has("789467557433180221")) {
+            button.clicker.member.roles.remove("789467557433180221")
+        } else {
+            button.clicker.member.roles.add("789467557433180221")
+        }
     }
 
     if (button.id == "social") {
         button.reply.defer()
-        button.clicker.member.roles.add("893801930508365866");
+        if(button.clicker.member.roles.cache.has("893801930508365866")) {
+            button.clicker.member.roles.remove("893801930508365866")
+        } else {
+            button.clicker.member.roles.add("893801930508365866")
+        }
     }
 
     if (button.id == "gaming") {
         button.reply.defer()
-        button.clicker.member.roles.add("893802104479703081");
+        if(button.clicker.member.roles.cache.has("893802104479703081")) {
+            button.clicker.member.roles.remove("893802104479703081")
+        } else {
+            button.clicker.member.roles.add("893802104479703081")
+        }
     }
 })
 
