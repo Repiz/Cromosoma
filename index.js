@@ -205,6 +205,7 @@ client.on("message", (message) => {
             .addComponent(gamingroleLL)
             .addComponent(gamingroleR)
             .addComponent(gamingroleV)
+        var row2 = new MessageActionRow()
             .addComponent(gamingroleOSU)
             .addComponent(gamingroleS)
 
@@ -216,19 +217,8 @@ client.on("message", (message) => {
             .setFooter("ruoli gaming")
             .setTimestamp();
 
-        var speriamo = message.channel.send({
-        embed: rgembed,
-        components: [
-        {
-          type: 1,
-          components: [gamingroleM[0], gamingroleC[1], gamingroleLL[2], gamingroleR[3], gamingroleV[4]],
-        },
-        {
-          type: 1,
-          components: [gamingroleOSU[0], gamingroleS[1]]
-        }
-        ]});
-        message.channel.send(rgembed, row)
+        
+        message.channel.send(rgembed, row, row2)
     }
 })
 
