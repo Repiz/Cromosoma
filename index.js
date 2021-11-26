@@ -130,82 +130,6 @@ client.on("message", (message) => {
 
 })
 
-//menu per la moderazione
-
-/*client.on("message", (message) => {
-    if(message.content.startsWith(".mod")) {
-        var utenteKick = message.mentions.members.first();
-
-        if(!message.member.hasPermission("KICK_MEMBERS")) {
-            message.channel.send("Cosa vuoi fare senza diritti?");
-            return;
-        }
-
-        if(!message.member.hasPermission("MANAGE_ROLES")) {
-            message.channel.send("Cosa vuoi fare senza diritti?");
-            return;
-        }
-
-        if(!utenteKick) {
-            message.channel.send("Magari tagga qualcuno")
-            return;
-        }
-
-        var option1 = new MessageMenuOption()
-            .setLabel("Mutare")
-            .setDescription("Muta la persona che hai taggato")
-            .setValue("opzione1")
-            .setEmoji("🔈")
-
-        var option2 = new MessageMenuOption()
-            .setLabel("Kickare")
-            .setDescription("Espelli la persona che hai taggato")
-            .setValue("opzione2")
-            .setEmoji("❌")
-
-        var option3 = new MessageMenuOption()
-            .setLabel("Bannare")
-            .setDescription("Banna la persona che hai taggato")
-            .setValue("opzione3")
-            .setEmoji("⛔")
-
-        var menu = new MessageMenu()
-            .setPlaceholder("Seleziona l'azione che preferisci")
-            .setID("menu")
-            .setMinValues(1)
-            .setMaxValues(1)
-            .addOption(option1)
-            .addOption(option2)
-            .addOption(option3)
-
-        message.channel.send("Azioni di moderazione", menu);
-    }
-})
-
-//cosa fanno le 3 opzioni
-
-client.on("clickMenu", (menu) => {
-    if (menu.id == "menu") {
-        
-        menu.reply.defer()
-
-        if(menu.values[0] == "opzione1") {
-            utenteKick.roles.add("895734870377127946")
-                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
-        }
-        
-        if(menu.values[0] == "opzione2") {
-            utenteKick.kick()
-                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato espulso dal server. F"))
-        }
-
-        if(menu.values[0] == "opzione3") {
-            utenteKick.ban()
-                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
-        }
-    }
-});*/
-
 //bottone benvenuto con reaction roles
 
 client.on("clickButton", (button) => {
@@ -390,41 +314,6 @@ client.on("message", message => {
         }
     }
 })
-
-//reaction roles
-/*client.on("message", (message) => {
-    Channel.messages.fetch("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi").then(react("🟫"));
-    
-    if(message.content.includes("Reagite alle varie emoji qui sotto per ottenere il ruolo dei vostri giochi preferiti per vedere canali vocali e testuali proprio su quei giochi")) { 
-        message.channel.react("🟫");
-    });
-
-
-client.on("messageReactionAdd", async function (messageReaction, user) {
-    if (user.bot) return
-
-    if (messageReaction.message.partial) await messageReaction.message.fetch();
-
-    if (messageReaction.message.id == "894996521265819728") {
-        if (messageReaction._emoji.name == "🟫") {
-            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-            utente.roles.add("793819474582306876");
-        }
-    }
-})
-//Quando viene rimossa una reazione
-client.on("messageReactionRemove", async function (messageReaction, user) {
-    if (user.bot) return
-
-    if (messageReaction.message.partial) await messageReaction.message.fetch();
-
-    if (messageReaction.message.id == "idMessaggio") {
-        if (messageReaction._emoji.name == "🟫") {
-            var utente = messageReaction.message.guild.members.cache.find(x => x.id == user.id);
-            utente.roles.remove("793819474582306876");
-        }
-    }
-})*/
 
 //notifiche yt (prova)
  
