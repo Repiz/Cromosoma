@@ -199,7 +199,7 @@ client.on("message", (message) => {
             .setID("splitgate")
             .setEmoji("🌀")
 
-        var ruoligaming = new MessageActionRow()
+        var row = new MessageActionRow()
             .addComponent(gamingroleM)
             .addComponent(gamingroleC)
             .addComponent(gamingroleLL)
