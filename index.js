@@ -205,9 +205,7 @@ client.on("message", (message) => {
             .addComponent(gamingroleLL)
             .addComponent(gamingroleR)
             .addComponent(gamingroleV)
-        var row2 = new MessageActionRow()
-            .addComponent(gamingroleOSU)
-            .addComponent(gamingroleS)
+        
 
         var rgembed = new Discord.MessageEmbed()
             .setColor("#faa81a")
@@ -217,8 +215,16 @@ client.on("message", (message) => {
             .setFooter("ruoli gaming")
             .setTimestamp();
 
-        
         message.channel.send(rgembed, row, row2)
+    }
+
+    if(message.content == rgembed) {
+
+        var row2 = new MessageActionRow()
+            .addComponent(gamingroleOSU)
+            .addComponent(gamingroleS)
+
+        message.channel.send(row2)
     }
 })
 
