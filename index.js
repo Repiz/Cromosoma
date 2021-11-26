@@ -49,7 +49,7 @@ client.on("message", (message) => {
                 .setTitle("ID Server vanilla di il_BOGE")
                 .setURL("https://www.twitch.tv/il_boge")
                 .setAuthor("Cromosoma", "https://cdn.discordapp.com/attachments/784431869692870716/904782396577177700/Cromosoma.png")
-                .setDescription("L'ID del server vanilla è " + "**" + "futuro id server" + "**")
+                .setDescription("L'ID del server vanilla è **futuro id server**")
                 .setThumbnail("https://images-na.ssl-images-amazon.com/images/I/418cEZfh8-L.jpg")
                 .addField("⚠️⚠️ Avvertenza ⚠️⚠️", " Ti ricordo di non condividere questo ID con nessuno, e ripeto nessuno, per evitare spiacevoli conseguenze nel server vanilla (coff coff renny coff coff). Grazie", true)
                 .setFooter("Hai utilizzato il comando .idvanilla")
@@ -108,29 +108,7 @@ client.on("guildMemberRemove", member => {
     client.channels.cache.get("908464001153921064").send(member.toString + "è uscito dal server. Pensa che scarso!")
 })
 
-
-client.on("message", (message) => {
-    if(message.content == ".ticketspawn") {
-        var ticketembed = new Discord.MessageEmbed()
-            .setColor("#1e9498")
-            .setTitle("Crea un ticket se ti serve aiuto 📨")
-            .setDescription("Clicca sul bottone qui sotto per creare un canale privato in cui chiedere informazioni riguardo discord o in generale.\nPuoi aprire un **solo ticket** alla volta!")
-            .setThumbnail("https://iltuotecnico.online/wp-content/uploads/2019/10/immagineticket.png")
-            .setFooter("📨 TICKET 📨")
-            .setTimestamp();
-
-        var ticketbutton = new MessageButton()
-            .setLabel("Clicca per il ticket")
-            .setStyle("blurple")
-            .setID("bottoneticket")
-            .setEmoji("📨")
-
-        message.channel.send(ticketembed, ticketbutton)
-    }
-
-})
-
-//bottone benvenuto con reaction roles
+//bottoni in #regole con reaction roles
 
 client.on("clickButton", (button) => {
 
@@ -187,131 +165,56 @@ client.on("clickButton", (button) => {
     }
 })
 
+//bottoni in #ruoli gaming con reaction roles
 
-client.on("clickButton", (button) => {
-    if (button.id == "bottoneticket") {
-        button.reply.defer()
+client.on("message", (messaggio) => {
+    if(message.content == ".gamingroles") {
 
-        var server = button.message.channel.guild;
-        if (server.channels.cache.find(canale => canale.topic == `User ID: ${user.id}`)) {
-            button.reply.send("Hai già creato un ticket", true)
-            return
-        }
+        var gamingroleM = new MessageButton()
+            .setStyle("green")
+            .setID("minecraft")
+            .setEmoji("🟫")
+        var gamingroleC = new MessageButton()
+            .setStyle("blurple")
+            .setID("clash")
+            .setEmoji("👑")
+        var gamingroleLL = new MessageButton()
+            .setStyle("red")
+            .setID("LOL")
+            .setEmoji("🌲")
+        var gamingroleR = new MessageButton()
+            .setStyle("green")
+            .setID("rocket")
+            .setEmoji("🚗")
+        var gamingroleV = new MessageButton()
+            .setStyle("blurple")
+            .setID("valorant")
+            .setEmoji("🔻")
+        var gamingroleOSU = new MessageButton()
+            .setStyle("red")
+            .setID("OSU")
+            .setEmoji("🎵")
+        var gamingroleS = new MessageButton()
+            .setStyle("green")
+            .setID("splitgate")
+            .setEmoji("🌀")
 
-        server.channels.create(user.username, {
-            type: "text"
-        }).then(canale => {
-            canale.setTopic(`User ID: ${user.id}`);
-            canale.setParent("913527186206629929") 
-            canale.overwritePermissions([
-                {
-                    id: server.id,
-                    deny: ["VIEW_CHANNEL"]
-                },
-                {
-                    id: user.id,
-                    allow: ["VIEW_CHANNEL"]
-                },
-                {
-                    id: 893736035664662598,
-                    allow: ["VIEW_CHANNEL"]
-                }
-            ])
-            canale.send("Grazie per aver creato un ticket")
-        })
-}})
+        var ruoligaming = new MessageActionRow()
+            .addComponent(gamingroleM)
+            .addComponent(gamingroleC)
+            .addComponent(gamingroleLL)
+            .addComponent(gamingroleR)
+            .addComponent(gamingroleV)
+            .addComponent(gamingroleOSU)
+            .addComponent(gamingroleS)
 
-client.on("message", message => {
-    if (message.content == ".chiudi") {
-        var topic = message.channel.topic;
-        if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando!");
-            return
-        }
-
-        if (topic.startsWith("User ID:")) {
-            var idUtente = topic.slice(9);
-            if (message.author.id == idUtente || message.member.hasPermission("MANAGE_CHANNELS")) {
-                message.channel.delete();
-            }
-        }
-        else {
-            message.channel.send("Non puoi utilizzare questo comando!")
-        }
-    }
-
-    if (message.content.startsWith(".aggiungi")) {
-        var topic = message.channel.topic;
-        if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando!");
-            return
-        }
-
-        if (topic.startsWith("User ID:")) {
-            var idUtente = topic.slice(9);
-            if (message.author.id == idUtente || message.member.hasPermission("MANAGE_CHANNELS")) {
-                var utente = message.mentions.members.first();
-                if (!utente) {
-                    message.channel.send("Inserire un utente valido magari!");
-                    return
-                }
-
-                var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
-
-                if (haIlPermesso) {
-                    message.channel.send("Questo utente ha già accesso al ticket!")
-                    return
-                }
-
-                message.channel.updateOverwrite(utente, {
-                    VIEW_CHANNEL: true
-                })
-
-                message.channel.send(`${utente.toString()} è stato aggiunto al ticket`)
-            }
-        }
-        else {
-            message.channel.send("Non puoi utilizzare questo comando!")
-        }
-    }
-    if (message.content.startsWith(".rimuovi")) {
-        var topic = message.channel.topic;
-        if (!topic) {
-            message.channel.send("Non puoi utilizzare questo comando!");
-            return
-        }
-
-        if (topic.startsWith("User ID:")) {
-            var idUtente = topic.slice(9);
-            if (message.author.id == idUtente || message.member.hasPermission("MANAGE_CHANNELS")) {
-                var utente = message.mentions.members.first();
-                if (!utente) {
-                    message.channel.send("Inserire un utente valido magari!");
-                    return
-                }
-
-                var haIlPermesso = message.channel.permissionsFor(utente).has("VIEW_CHANNEL", true)
-
-                if (!haIlPermesso) {
-                    message.channel.send("Non puoi rimuovere questo utente dal ticket!")
-                    return
-                }
-
-                if (utente.hasPermission("MANAGE_CHANNELS")) {
-                    message.channel.send("Non puoi rimuovere questo utente dal ticket!")
-                    return
-                }
-
-                message.channel.updateOverwrite(utente, {
-                    VIEW_CHANNEL: false
-                })
-
-                message.channel.send(`${utente.toString()} è stato rimosso al ticket`)
-            }
-        }
-        else {
-            message.channel.send("Non puoi utilizzare questo comando!")
-        }
+        var rgembed = new Discord.MessageEmbed()
+            .setColor("#faa81a")
+            .setTitle("Bottoni per i ruoli dei videogiochi")
+            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i **ruoli dei videogiochi** per aver/non avere accesso ai canali testuale e vocale a essi dedicati.\nElenco emoji-ruolo:\n🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>")
+            .setFooter("ruoli gaming")
+            .setTimestamp();
+        message.channel.send(rgembed, ruoligaming)
     }
 })
 
