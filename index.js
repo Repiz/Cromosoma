@@ -215,6 +215,19 @@ client.on("message", (message) => {
             .addField("**Elenco emoji-ruolo**", "🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>")
             .setFooter("ruoli gaming")
             .setTimestamp();
+
+        var speriamo = message.channel.send({
+        embed: rgembed,
+        components: [
+        {
+          type: 1,
+          components: [gamingroleM[0], gamingroleC[1], gamingroleLL[2], gamingroleR[3], gamingroleV[4]],
+        },
+        {
+          type: 1,
+          components: [gamingroleOSU[0], gamingroleS[1]]
+        }
+        ]});
         message.channel.send(rgembed, row)
     }
 })
