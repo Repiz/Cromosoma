@@ -211,7 +211,8 @@ client.on("message", (message) => {
         var rgembed = new Discord.MessageEmbed()
             .setColor("#faa81a")
             .setTitle("Bottoni per i ruoli dei videogiochi")
-            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i **ruoli dei videogiochi** per aver/non avere accesso ai canali testuale e vocale a essi dedicati.\nElenco emoji-ruolo:\n🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>")
+            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i **ruoli dei videogiochi** per aver/non avere accesso ai canali testuale e vocale a essi dedicati.")
+            .addField("**Elenco emoji-ruolo**", "🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>")
             .setFooter("ruoli gaming")
             .setTimestamp();
         message.channel.send(rgembed, ruoligaming)
