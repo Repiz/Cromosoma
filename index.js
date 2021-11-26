@@ -167,7 +167,7 @@ client.on("clickButton", (button) => {
 
 //bottoni in #ruoli gaming con reaction roles
 
-client.on("message", (messaggio) => {
+client.on("message", (message) => {
     if(message.content == ".gamingroles") {
 
         var gamingroleM = new MessageButton()
