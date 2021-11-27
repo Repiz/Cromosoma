@@ -66,7 +66,8 @@ client.on("message", (message) => {
             message.channel.send(message.author.toString() + " non ha il ruolo 🥶Cromosoma Supremo🥶, vai a spendere un po' di cromosomi da https://www.twitch.tv/il_boge!")
         }
     }
-    //testa o croce
+
+    //testa o croce con cooldown
     if(message.content == ".teocr") {
         if(cooldown.has(message.author.id)) {
             return;
@@ -80,6 +81,31 @@ client.on("message", (message) => {
         }, 5000);   
             }
         }
+    
+    //gaymeter con cooldown
+    if(message.content == ".gaymeter") {
+        if(cooldown.has(message.author.id)) {
+            return;
+        } else {
+            var percentuale = ["0","5","10","15","20","25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","104","208","312","416","over 9000"]
+
+            var gayperc = Math.floor(Math.random() * percentuale.length)
+
+            var gay = new Discord.MessageEmbed()
+                .setColor("#ff56cf")
+                .setTitle("Find Gay IA Machine")
+                .setDescription("Analyzing " + message.author.toString + " /\nBuild starting up/starting analyzing/checking gay or etero/\nGay found/checking percentage/Build finished up\nThe person is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
+                .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
+                .setFooter("/Error 404/ ETERO not found")
+                .setTimestamp();
+            message.channel.send(gay);
+
+            cooldown.add(message.author.id)
+            setTimeout(() => {
+                cooldown.delete(message.author.id)
+        }, 30000);
+            }
+    }
 })
 
 //counter membri server, messaggi di benvenuto e messaggi quando qualcuno esce dal server
@@ -108,34 +134,26 @@ client.on("guildMemberRemove", member => {
     client.channels.cache.get("908464001153921064").send(member.toString + "è uscito dal server. Pensa che scarso!")
 })
 
-//bottoni in #regole con reaction roles
+//bottoni in #regole con reaction roles e messaggio in #ruoli gaming con reaction roles
 
 client.on("clickButton", (button) => {
 
-        //ruoli
-        var botruolo1 = new MessageButton()
-            .setLabel("Cromosoma Semplice")
-            .setStyle("red")
-            .setID("generale")
-            .setEmoji("🌐")
-        
-        var botruolo2 = new MessageButton()
-            .setLabel("Cromosoma Sociale")
-            .setStyle("green")
-            .setID("social")
-            .setEmoji("👥")
-
-        var botruolo3 = new MessageButton()
-            .setLabel("Cromosoma Gamer")
-            .setStyle("blurple")
-            .setID("gaming")
-            .setEmoji("🎮")
-
-        //i 3 ruoli
-        var row = new MessageActionRow()
-            .addComponent(botruolo1)
-            .addComponent(botruolo2)
-            .addComponent(botruolo3)
+    //ruoli
+    var botruolo1 = new MessageButton()
+        .setLabel("Cromosoma Semplice")
+        .setStyle("red")
+        .setID("generale")
+        .setEmoji("🌐")       
+    var botruolo2 = new MessageButton()
+        .setLabel("Cromosoma Sociale")
+        .setStyle("green")
+        .setID("social")
+        .setEmoji("👥")
+    var botruolo3 = new MessageButton()
+        .setLabel("Cromosoma Gamer")
+        .setStyle("blurple")
+        .setID("gaming")
+        .setEmoji("🎮")
 
     if (button.id == "generale") {
         button.reply.defer()
@@ -163,45 +181,41 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("893802104479703081")
         }
     }
-})
 
-//bottoni in #ruoli gaming con reaction roles
+    //ruoli gaming
+    var gamingroleM = new MessageButton()
+        .setStyle("green")
+        .setID("minecraft")
+        .setEmoji("🟫")
+    var gamingroleC = new MessageButton()
+        .setStyle("blurple")
+        .setID("clash")
+        .setEmoji("👑")
+    var gamingroleLL = new MessageButton()
+        .setStyle("red")
+        .setID("LOL")
+        .setEmoji("🌲")
+    var gamingroleR = new MessageButton()
+        .setStyle("green")
+        .setID("rocket")
+        .setEmoji("🚗")
+    var gamingroleV = new MessageButton()
+        .setStyle("blurple")
+        .setID("valorant")
+        .setEmoji("🔻")
+    var gamingroleOSU = new MessageButton()
+        .setStyle("red")
+        .setID("OSU")
+        .setEmoji("🎵")
+    var gamingroleS = new MessageButton()
+        .setStyle("green")
+        .setID("splitgate")
+        .setEmoji("🌀")
+    var gamingroleAS = new MessageButton()
+        .setStyle("blurple")
+        .setID("AmongUs")
+        .setEmoji("🔪")
 
-client.on("clickButton", (button) => {
-
-        var gamingroleM = new MessageButton()
-            .setStyle("green")
-            .setID("minecraft")
-            .setEmoji("🟫")
-        var gamingroleC = new MessageButton()
-            .setStyle("blurple")
-            .setID("clash")
-            .setEmoji("👑")
-        var gamingroleLL = new MessageButton()
-            .setStyle("red")
-            .setID("LOL")
-            .setEmoji("🌲")
-        var gamingroleR = new MessageButton()
-            .setStyle("green")
-            .setID("rocket")
-            .setEmoji("🚗")
-        var gamingroleV = new MessageButton()
-            .setStyle("blurple")
-            .setID("valorant")
-            .setEmoji("🔻")
-        var gamingroleOSU = new MessageButton()
-            .setStyle("red")
-            .setID("OSU")
-            .setEmoji("🎵")
-        var gamingroleS = new MessageButton()
-            .setStyle("green")
-            .setID("splitgate")
-            .setEmoji("🌀")
-        var gamingroleAS = new MessageButton()
-            .setStyle("blurple")
-            .setID("AmongUs")
-            .setEmoji("🔪")
-        
     if (button.id == "minecraft") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("793819474582306876")) {
@@ -210,7 +224,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("793819474582306876")
         }
     }
-
+        
     if (button.id == "clash") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("793821083295154186")) {
@@ -219,7 +233,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("793821083295154186")
         }
     }
-
+        
     if (button.id == "LOL") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("793819687199965204")) {
@@ -228,7 +242,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("793819687199965204")
         }
     }
-
+        
     if (button.id == "rocket") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("793819607852122118")) {
@@ -237,7 +251,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("793819607852122118")
         }
     }
-
+        
     if (button.id == "valorant") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("793820710711197706")) {
@@ -246,7 +260,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("793820710711197706")
         }
     }
-    
+            
     if (button.id == "OSU") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("836253388987433021")) {
@@ -255,7 +269,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("836253388987433021")
         }
     }
-
+        
     if (button.id == "splitgate") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("883459668679217163")) {
@@ -264,7 +278,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("883459668679217163")
         }
     }
-
+        
     if (button.id == "AmongUs") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("914118978316668969")) {
@@ -273,6 +287,7 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("914118978316668969")
         }
     }
+
 })
 
 //notifiche yt (prova)
