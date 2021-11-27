@@ -190,7 +190,7 @@ client.on("clickButton", (button) => {
             .setID("valorant")
             .setEmoji("🔻")
 
-        var prova1 = new MessageActionRow
+        var prova1 = new MessageActionRow()
             .addComponent(gamingroleM)
             .addComponent(gamingroleC)
             .addComponent(gamingroleLL)
@@ -210,7 +210,7 @@ client.on("clickButton", (button) => {
             .setID("AmongUs")
             .setEmoji("🔪")
 
-        var prova2 = new MessageActionRow
+        var prova2 = new MessageActionRow()
             .addComponent(gamingroleOSU)
             .addComponent(gamingroleS)
             .addComponent(gamingroleAS)
