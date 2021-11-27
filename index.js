@@ -199,33 +199,16 @@ client.on("message", (message) => {
             .setID("splitgate")
             .setEmoji("🌀")
 
-        var row = new MessageActionRow()
-            .addComponent(gamingroleM)
-            .addComponent(gamingroleC)
-            .addComponent(gamingroleLL)
-            .addComponent(gamingroleR)
-            .addComponent(gamingroleV)
-        
-
-        var rgembed = new Discord.MessageEmbed()
-            .setColor("#faa81a")
-            .setTitle("Bottoni per i ruoli dei videogiochi")
-            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i **ruoli dei videogiochi** per aver/non avere accesso ai canali testuale e vocale a essi dedicati.")
-            .addField("**Elenco emoji-ruolo**", "🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>")
+        var embedM = new Discord.MessageEmbed()
+            .setColor("##79360c")
+            .setTitle("Minecraft")
+            .setDescription("**Schiaccia il bottone** con le emoji per prenderti o toglierti il ruolo del gioco e per aver/non avere accesso ai canali testuale e vocale a esso dedicati.\n<@&894996521265819728>")
             .setFooter("ruoli gaming")
             .setTimestamp();
 
-        message.channel.send(rgembed, row, row2)
+        message.channel.send(embedM, gamingroleM)
     }
-
-    if(message.content == rgembed) {
-
-        var row2 = new MessageActionRow()
-            .addComponent(gamingroleOSU)
-            .addComponent(gamingroleS)
-
-        message.channel.send(row2)
-    }
+    //🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>
 })
 
 //notifiche yt (prova)
