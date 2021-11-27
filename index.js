@@ -189,6 +189,14 @@ client.on("clickButton", (button) => {
             .setStyle("blurple")
             .setID("valorant")
             .setEmoji("🔻")
+
+        var prova1 = new MessageActionRow
+            .addComponent(gamingroleM)
+            .addComponent(gamingroleC)
+            .addComponent(gamingroleLL)
+            .addComponent(gamingroleR)
+            .addComponent(gamingroleV)
+
         var gamingroleOSU = new MessageButton()
             .setStyle("red")
             .setID("OSU")
@@ -201,6 +209,12 @@ client.on("clickButton", (button) => {
             .setStyle("blurple")
             .setID("AmongUs")
             .setEmoji("🔪")
+
+        var prova2 = new MessageActionRow
+            .addComponent(gamingroleOSU)
+            .addComponent(gamingroleS)
+            .addComponent(gamingroleAS)
+        
 
     if (button.id == "minecraft") {
         button.reply.defer()
@@ -273,6 +287,11 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("914118978316668969")
         }
     }
+})
+
+client.on("message", (message) =>{
+    if(message.content == ".speriamo")
+        message.channel.send("questo sarà l'embed", {rows: [prova1, prova2]})
 })
 
 //notifiche yt (prova)
