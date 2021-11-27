@@ -189,14 +189,6 @@ client.on("clickButton", (button) => {
             .setStyle("blurple")
             .setID("valorant")
             .setEmoji("🔻")
-
-        var prova1 = new MessageActionRow()
-            .addComponent(gamingroleM)
-            .addComponent(gamingroleC)
-            .addComponent(gamingroleLL)
-            .addComponent(gamingroleR)
-            .addComponent(gamingroleV)
-
         var gamingroleOSU = new MessageButton()
             .setStyle("red")
             .setID("OSU")
@@ -209,13 +201,7 @@ client.on("clickButton", (button) => {
             .setStyle("blurple")
             .setID("AmongUs")
             .setEmoji("🔪")
-
-        var prova2 = new MessageActionRow()
-            .addComponent(gamingroleOSU)
-            .addComponent(gamingroleS)
-            .addComponent(gamingroleAS)
         
-
     if (button.id == "minecraft") {
         button.reply.defer()
         if(button.clicker.member.roles.cache.has("793819474582306876")) {
@@ -287,56 +273,6 @@ client.on("clickButton", (button) => {
             button.clicker.member.roles.add("914118978316668969")
         }
     }
-})
-
-client.on("message", (message) =>{
-    if(message.content == ".speriamo") {
-        var gamingroleM = new MessageButton()
-            .setStyle("green")
-            .setID("minecraft")
-            .setEmoji("🟫")
-        var gamingroleC = new MessageButton()
-            .setStyle("blurple")
-            .setID("clash")
-            .setEmoji("👑")
-        var gamingroleLL = new MessageButton()
-            .setStyle("red")
-            .setID("LOL")
-            .setEmoji("🌲")
-        var gamingroleR = new MessageButton()
-            .setStyle("green")
-            .setID("rocket")
-            .setEmoji("🚗")
-        var gamingroleV = new MessageButton()
-            .setStyle("blurple")
-            .setID("valorant")
-            .setEmoji("🔻")
-
-        var prova1 = new MessageActionRow()
-            .addComponent(gamingroleM)
-            .addComponent(gamingroleC)
-            .addComponent(gamingroleLL)
-            .addComponent(gamingroleR)
-            .addComponent(gamingroleV)
-
-        var gamingroleOSU = new MessageButton()
-            .setStyle("red")
-            .setID("OSU")
-            .setEmoji("🎵")
-        var gamingroleS = new MessageButton()
-            .setStyle("green")
-            .setID("splitgate")
-            .setEmoji("🌀")
-        var gamingroleAS = new MessageButton()
-            .setStyle("blurple")
-            .setID("AmongUs")
-            .setEmoji("🔪")
-
-        var prova2 = new MessageActionRow()
-            .addComponent(gamingroleOSU)
-            .addComponent(gamingroleS)
-            .addComponent(gamingroleAS)
-        message.channel.send("questo sarà l'embed", {rows: [prova1, prova2]})}
 })
 
 //notifiche yt (prova)
