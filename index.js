@@ -167,8 +167,7 @@ client.on("clickButton", (button) => {
 
 //bottoni in #ruoli gaming con reaction roles
 
-client.on("message", (message) => {
-    if(message.content == ".gamingroles1") {
+client.on("clickButton", (button) => {
 
         var gamingroleM = new MessageButton()
             .setStyle("green")
@@ -186,25 +185,6 @@ client.on("message", (message) => {
             .setStyle("green")
             .setID("rocket")
             .setEmoji("🚗")
-        
-        var rowg1 = new MessageActionRow()
-            .addComponent(gamingroleM)
-            .addComponent(gamingroleC)
-            .addComponent(gamingroleLL)
-            .addComponent(gamingroleR)
-
-        var embedM = new Discord.MessageEmbed()
-            .setColor("#faa81a")
-            .setTitle("Ruoli per Minecraft, Clash, League of Legends e Rocket League")
-            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i ruoli dei giochi e per aver/non avere accesso ai canali testuali e vocali a essi dedicati.\n🟫=<@&793819474582306876>\n👑=<@&793821083295154186>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>")
-            .setFooter("Ruoli gaming 1")
-            .setTimestamp();
-
-        message.channel.send(embedM, rowg1)
-    }
-
-    if(message.content == ".gamingroles2") {
-        
         var gamingroleV = new MessageButton()
             .setStyle("blurple")
             .setID("valorant")
@@ -222,20 +202,76 @@ client.on("message", (message) => {
             .setID("AmongUs")
             .setEmoji("🔪")
 
-        var rowg2 = new MessageActionRow()
-            .addComponent(gamingroleV)
-            .addComponent(gamingroleOSU)
-            .addComponent(gamingroleS)
-            .addComponent(gamingroleAS)
+    if (button.id == "minecraft") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("793819474582306876")) {
+            button.clicker.member.roles.remove("793819474582306876")
+        } else {
+            button.clicker.member.roles.add("793819474582306876")
+        }
+    }
 
-        var embedV = new Discord.MessageEmbed()
-            .setColor("#faa81a")
-            .setTitle("Ruoli per Valorant, OSU, Splitgate e AmongUs")
-            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i ruoli dei giochi e per aver/non avere accesso ai canali testuali e vocali a essi dedicati.\n🔻=<@&793820710711197706>\n🎵=<@&836253388987433021>\n🌀=<@&883459668679217163>\n🔪=<@&914118978316668969>")
-            .setFooter("Ruoli gaming 2")
-            .setTimestamp();
+    if (button.id == "clash") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("914126241597100075")) {
+            button.clicker.member.roles.remove("914126241597100075")
+        } else {
+            button.clicker.member.roles.add("914126241597100075")
+        }
+    }
 
-            message.channel.send(embedV, rowg2)
+    if (button.id == "LOL") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("793819687199965204")) {
+            button.clicker.member.roles.remove("793819687199965204")
+        } else {
+            button.clicker.member.roles.add("793819687199965204")
+        }
+    }
+
+    if (button.id == "rocket") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("793819607852122118")) {
+            button.clicker.member.roles.remove("793819607852122118")
+        } else {
+            button.clicker.member.roles.add("793819607852122118")
+        }
+    }
+
+    if (button.id == "valorant") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("793820710711197706")) {
+            button.clicker.member.roles.remove("793820710711197706")
+        } else {
+            button.clicker.member.roles.add("793820710711197706")
+        }
+    }
+    
+    if (button.id == "OSU") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("836253388987433021")) {
+            button.clicker.member.roles.remove("836253388987433021")
+        } else {
+            button.clicker.member.roles.add("836253388987433021")
+        }
+    }
+
+    if (button.id == "splitgate") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("883459668679217163")) {
+            button.clicker.member.roles.remove("883459668679217163")
+        } else {
+            button.clicker.member.roles.add("883459668679217163")
+        }
+    }
+
+    if (button.id == "AmongUs") {
+        button.reply.defer()
+        if(button.clicker.member.roles.cache.has("914118978316668969")) {
+            button.clicker.member.roles.remove("914118978316668969")
+        } else {
+            button.clicker.member.roles.add("914118978316668969")
+        }
     }
 })
 
