@@ -213,10 +213,10 @@ client.on("clickButton", (button) => {
 
     if (button.id == "clash") {
         button.reply.defer()
-        if(button.clicker.member.roles.cache.has("914126241597100075")) {
-            button.clicker.member.roles.remove("914126241597100075")
+        if(button.clicker.member.roles.cache.has("793821083295154186")) {
+            button.clicker.member.roles.remove("793821083295154186")
         } else {
-            button.clicker.member.roles.add("914126241597100075")
+            button.clicker.member.roles.add("793821083295154186")
         }
     }
 
