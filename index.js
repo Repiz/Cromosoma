@@ -196,7 +196,7 @@ client.on("message", (message) => {
         var embedM = new Discord.MessageEmbed()
             .setColor("#faa81a")
             .setTitle("Ruoli per Minecraft, Clash, League of Legends e Rocket League")
-            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i ruoli dei giochi e per aver/non avere accesso ai canali testuali e vocali a essi dedicati.\n🟫=<@&894996521265819728>\n👑=<@&894996521265819728>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>")
+            .setDescription("**Schiaccia i bottoni** con le emoji per prenderti o toglierti i ruoli dei giochi e per aver/non avere accesso ai canali testuali e vocali a essi dedicati.\n🟫=<@&793819474582306876>\n👑=<@&793821083295154186>\n🌲=<@&793819687199965204>\n🚗=<@&793819607852122118>")
             .setFooter("Ruoli gaming 1")
             .setTimestamp();
 
