@@ -99,7 +99,7 @@ client.on("message", (message) => {
             if(percentuale[gayperc]<100) {
                 var percmanc =100-percentuale[gayperc];
             } else {
-                percmanc = null;
+                percmanc = "";
             }
 
             var gay = new Discord.MessageEmbed()
