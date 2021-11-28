@@ -145,6 +145,10 @@ client.on("message", (message) => {
             message.channel.send("Magari tagga qualcuno")
             return;
         }
+        if (!message.mentions.members.first().kickable) {
+            message.channel.send("Io non ho il permesso");
+            return
+        }
         utenteKick.kick()
             .then(() => message.channel.send("<@" + utenteKick + "> è stato espulso"));
 
