@@ -87,7 +87,7 @@ client.on("message", (message) => {
         if(cooldown.has(message.author.id)) {
             return;
         } else {
-            var gayperson = message.members.mentions.first().id;
+            var gayperson = message.mentions.members.first().id;
             if(!gayperson) {
                 gayperson = message.author.id;
             };
