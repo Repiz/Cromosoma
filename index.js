@@ -98,16 +98,29 @@ client.on("message", (message) => {
             
             if(percentuale[gayperc]<100) {
                 var percmanc =100-percentuale[gayperc];
-            } else {
-                percmanc = "";
-            }
 
-            var gay = new Discord.MessageEmbed()
+                var gay = new Discord.MessageEmbed()
                 .setColor("#ff56cf")
                 .setTitle("Find Gay IA Machine")
                 .setDescription("Analyzing <@" + gayperson + "> /\nBuild starting up/starting analyzing/checking gay or etero/\nGay found/checking percentage/Build finished up\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
                 .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
-                .setFooter("/Error 404/ETERO not found " + percmanc)
+                .setFooter("/Process exited/ETERO percentage is " + percmanc + " %")
+                .setTimestamp();
+            message.channel.send(gay);
+
+            cooldown.add(message.author.id)
+            setTimeout(() => {
+                cooldown.delete(message.author.id)
+            }, 30000);
+
+            } else {
+
+                var gay = new Discord.MessageEmbed()
+                .setColor("#ff56cf")
+                .setTitle("Find Gay IA Machine")
+                .setDescription("Analyzing <@" + gayperson + "> /\nBuild starting up/starting analyzing/checking gay or etero/\nGay found/checking percentage/Build finished up\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
+                .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
+                .setFooter("/Error 404/ETERO not found")
                 .setTimestamp();
             message.channel.send(gay);
 
@@ -116,6 +129,7 @@ client.on("message", (message) => {
                 cooldown.delete(message.author.id)
         }, 30000);
             }
+        }
     }
 })
 
