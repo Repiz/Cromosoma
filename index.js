@@ -187,15 +187,18 @@ client.on("clickMenu", (menu) => {
         menu.reply.defer()
 
         if(menu.values[0] == "opzione1") {
-            utenteKick.roles.add("895734870377127946").then(() => menu.message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
+            utenteKick.roles.add("895734870377127946")
+                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato mutato. Pensa che logorroico!"))
         }
         
         if(menu.values[0] == "opzione2") {
-            utenteKick.kick().then(() => menu.message.channel.send("<@" + utenteKick + "> è stato espulso dal server. F"))
+            utenteKick.kick()
+                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato espulso dal server. F"))
         }
 
         if(menu.values[0] == "opzione3") {
-            utenteKick.ban().then(() => menu.message.channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
+            utenteKick.ban()
+                .then(() => menu.message.channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
         }
     }
 });
