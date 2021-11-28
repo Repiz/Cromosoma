@@ -144,13 +144,11 @@ client.on("message", (message) => {
             return;
         }
         if (!message.mentions.members.first().kickable) {
-            message.channel.send("Io non ho il permesso");
+            message.channel.send("Il mio ruolo è sotto il suo, non posso niente contro la sua potenza");
             return
         }
-        utenteKick.kick()
-            .then(() => message.channel.send("<@" + utenteKick + "> è stato espulso"));
 
-        /*var option1 = new MessageMenuOption()
+        var option1 = new MessageMenuOption()
             .setLabel("Mutare")
             .setDescription("Muta la persona che hai taggato")
             .setValue("opzione1")
@@ -177,13 +175,13 @@ client.on("message", (message) => {
             .addOption(option2)
             .addOption(option3)
 
-        message.channel.send("Azioni di moderazione", menu);*/
+        message.channel.send("Azioni di moderazione", menu);
     }
 })
 
 //cosa fanno le 3 azioni di moderazione
 
-/*client.on("clickMenu", (menu) => {
+client.on("clickMenu", (menu) => {
     if (menu.id == "menu") {
         
         menu.reply.defer()
@@ -200,7 +198,7 @@ client.on("message", (message) => {
             utenteKick.ban().then(() => menu.message.channel.send("<@" + utenteKick + "> è stato bannato dal server. Così impara!"))
         }
     }
-});*/
+});
 
 //counter membri server, messaggi di benvenuto e messaggi quando qualcuno esce dal server
 
