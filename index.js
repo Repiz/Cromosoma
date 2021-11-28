@@ -96,12 +96,16 @@ client.on("message", (message) => {
 
             var gayperc = Math.floor(Math.random() * percentuale.length)
             
+            if(percentuale[gayperc] < 100 || percentuale[gayperc] != 100) {
+                var percmanc = 100-percentuale[gayperc]
+            }
+
             var gay = new Discord.MessageEmbed()
                 .setColor("#ff56cf")
                 .setTitle("Find Gay IA Machine")
                 .setDescription("Analyzing <@" + gayperson + "> /\nBuild starting up/starting analyzing/checking gay or etero/\nGay found/checking percentage/Build finished up\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
                 .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
-                .setFooter("/Error 404/ETERO not found")
+                .setFooter("/Error 404/ETERO not found" + percmanc)
                 .setTimestamp();
             message.channel.send(gay);
 
