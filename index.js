@@ -135,7 +135,7 @@ client.on("message", (message) => {
     }
 
     if(message.content.startsWith(".mod")) {
-        const utenteKick = message.mentions.members.first();
+        var utenteKick = message.mentions.members.first();
 
         if(!message.member.hasPermission("KICK_MEMBERS" && "MANAGE_ROLES")) {
             message.channel.send("Cosa vuoi fare senza diritti?");
@@ -145,7 +145,6 @@ client.on("message", (message) => {
             message.channel.send("Magari tagga qualcuno")
             return;
         }
-
         utenteKick.kick()
             .then(() => message.channel.send("<@" + utenteKick + "> è stato espulso"));
 
