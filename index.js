@@ -85,14 +85,14 @@ client.on("message", (message) => {
     //gaymeter con cooldown
     if(message.content.startsWith(".gaymeter")) {
         if(cooldown.has(message.author.id)) {
-            message.channel.send("cooldown");
+            return;
         } else {
             var gayperson = message.mentions.members.first();
             if(!gayperson) {
                 gayperson = message.author.id;
             };
-            //"10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "312", "416", "208",
-            var percentuale = [ "95", "100", "104", "over 9000"];
+        
+            var percentuale = ["10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100", "104", "208", "312", "416", "over 9000"];
 
             var gayperc = Math.floor(Math.random() * percentuale.length)
             
@@ -106,6 +106,7 @@ client.on("message", (message) => {
                 .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
                 .setFooter("/Process exited/ETERO percentage is " + percmanc + " %")
                 .setTimestamp();
+                
             message.channel.send(gay);
 
             cooldown.add(message.author.id)
@@ -122,6 +123,7 @@ client.on("message", (message) => {
                 .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
                 .setFooter("/Error 404/ETERO not found")
                 .setTimestamp();
+
             message.channel.send(gay);
 
             cooldown.add(message.author.id)
@@ -135,8 +137,6 @@ client.on("message", (message) => {
 
 //counter membri server, messaggi di benvenuto e messaggi quando qualcuno esce dal server
 
-var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
-
 client.on("guildMemberAdd", (member) => {
     //counter +
     var utentiCount = member.guild.memberCount - 10;
@@ -144,6 +144,7 @@ client.on("guildMemberAdd", (member) => {
 
     canale.setName("🦽┊Membri: " + utentiCount)
     //messaggio di benvenuto
+    var messaggio = ["500 cromosomi (Pazzo Sgravo)", "50 cromosomi (Ananas)", "78 cromosomi (Cane)", "254 cromosomi (Gamberetto)", "22 cromosomi (Fagiolo", "2 cromosomi (Formica)", "56 cromosomi (Elefante)", "64 cromosomi (Cavallo)", "60 cromosomi (Mucca)"];
     var random = Math.floor(Math.random() * messaggio.length)
 
     client.channels.cache.get("894917704610381834").send("👋 Hey " + member.toString() + ", benvenuto nel **" + member.guild.name + "**.\n🔢 Sei il **" + utentiCount + "° membro** del server.\n😎 Hai **" + messaggio[random] + "**.\n📃 Ti ricordo di **passare** in <#695213680656384010> e poi in <#894915662537957396> per prenderti i ruoli!\n✅ Buona permanenza!")
@@ -156,6 +157,7 @@ client.on("guildMemberRemove", member => {
 
     canale.setName("🦽┊Membri: " + utentiCount)
 
+    //messaggio in #automod quando qualcuno esce dal server
     client.channels.cache.get("908464001153921064").send(member.toString + "è uscito dal server. Pensa che scarso!")
 })
 
