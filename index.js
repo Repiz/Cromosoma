@@ -91,8 +91,8 @@ client.on("message", (message) => {
             if(!gayperson) {
                 gayperson = message.author.id;
             };
-            //"10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "312", "416",
-            var percentuale = [ "90", "95", "100", "104", "208", "over 9000"];
+            //"10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "312", "416", "208",
+            var percentuale = [ "95", "100", "104", "over 9000"];
 
             var gayperc = Math.floor(Math.random() * percentuale.length)
             
