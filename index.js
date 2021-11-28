@@ -96,7 +96,7 @@ client.on("message", (message) => {
 
             var gayperc = Math.floor(Math.random() * percentuale.length)
             
-            if(percentuale[gayperc]<100||percentuale[gayperc]!=100) {
+            if(percentuale[gayperc]<100) {
                 var percmanc =100-percentuale[gayperc];
             } else {
                 percmanc = null;
