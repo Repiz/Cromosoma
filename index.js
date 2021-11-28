@@ -87,15 +87,14 @@ client.on("message", (message) => {
         if(cooldown.has(message.author.id)) {
             return;
         } else {
-            var gayperson = message.mentions.members.first();
+            var gayperson = message.members.mentions.first().id;
             if(!gayperson) {
                 gayperson = message.author.id;
             };
 
-            var percentuale = ["0","5","10","15","20","25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100","104","208","312","416","over 9000"]
+            var percentuale = ["10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100", "104", "208", "312", "416", "over 9000"]
 
             var gayperc = Math.floor(Math.random() * percentuale.length)
-            
             
             var gay = new Discord.MessageEmbed()
                 .setColor("#ff56cf")
