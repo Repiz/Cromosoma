@@ -173,9 +173,9 @@ client.on("message", (message) => {
             .setMaxValues(1)
             .addOption(option1)
             .addOption(option2)
-            .addOption(option3)*/
+            .addOption(option3)
 
-        message.channel.send("Azioni di moderazione", menu);
+        message.channel.send("Azioni di moderazione", menu);*/
     }
 })
 
