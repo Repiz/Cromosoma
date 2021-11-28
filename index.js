@@ -146,7 +146,7 @@ client.on("message", (message) => {
             return;
         }
 
-        utenteKick.kick();
+        utenteKick.kick()
             .then(() => message.channel.send("<@" + utenteKick + "> è stato espulso"));
 
         /*var option1 = new MessageMenuOption()
