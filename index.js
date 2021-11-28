@@ -135,7 +135,7 @@ client.on("message", (message) => {
     }
 
     if(message.content.startsWith(".mod")) {
-        var utenteKick = message.mentions.members.first();
+        const utenteKick = message.mentions.members.first();
 
         if(!message.member.hasPermission("KICK_MEMBERS" && "MANAGE_ROLES")) {
             message.channel.send("Cosa vuoi fare senza diritti?");
