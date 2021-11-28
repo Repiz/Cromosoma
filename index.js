@@ -85,7 +85,7 @@ client.on("message", (message) => {
     //gaymeter con cooldown
     if(message.content == ".gaymeter") {
         if(cooldown.has(message.author.id)) {
-            return;
+            message.channel.send("cooldown");
         } else {
             var gayperson = message.mentions.members.first();
             if(!gayperson) {
