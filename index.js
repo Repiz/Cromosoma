@@ -102,7 +102,7 @@ client.on("message", (message) => {
                 var gay = new Discord.MessageEmbed()
                 .setColor("#ff56cf")
                 .setTitle("Find Gay IA Machine")
-                .setDescription("Analyzing <@" + gayperson + "> /\nBuild starting up/starting analyzing/checking gay or etero/\nGay found/checking percentage/Build finished up\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
+                .setDescription("/Analyzing <@" + gayperson + ">\n/Build starting up/starting analyzing/checking gay or etero\n/Gay found/checking percentage/Build finished up/\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
                 .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
                 .setFooter("/Process exited/ETERO percentage is " + percmanc + " %")
                 .setTimestamp();
@@ -119,7 +119,7 @@ client.on("message", (message) => {
                 var gay = new Discord.MessageEmbed()
                 .setColor("#ff56cf")
                 .setTitle("Find Gay IA Machine")
-                .setDescription("Analyzing <@" + gayperson + "> /\nBuild starting up/starting analyzing/checking gay or etero/\nGay found/checking percentage/Build finished up\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
+                .setDescription("/Analyzing <@" + gayperson + ">\n/Build starting up/starting analyzing/checking gay or etero\n/Gay found/checking percentage/Build finished up/\nThe person (<@" + gayperson + ">) is " + percentuale[gayperc] + " % gay 🏳️‍🌈")
                 .setThumbnail("https://snorkisaraitu.files.wordpress.com/2018/07/bandiera-lgbt.png")
                 .setFooter("/Error 404/ETERO not found")
                 .setTimestamp();
@@ -132,6 +132,31 @@ client.on("message", (message) => {
         }, 30000);
             }
         }
+    }
+
+    if(message.content.startsWith(".clear")) {
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.send("Non puoi compiere un'azione così nobile!");
+            return
+        }
+        if(message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.send("Non posso eliminare i messaggi visto che non ho il permesso!");
+            return
+        }
+
+        var numeromessaggi = message.content.slice(7);
+        numeromessaggi = parseInt(numeromessaggi);
+
+        if(!numeromessaggi) {
+            message.channel.send("Inserisci un numero, non porcheria!");
+            return
+        }
+
+        message.channel.bulkDelete(numeromessaggi, true);
+        message.channel.send("Ho eliminato " + numeromessaggi + " messaggi da questo canale")
+        .then(msg => {
+            msg.delete({timeout:3000})
+        })
     }
 
     if(message.content.startsWith(".mod")) {
