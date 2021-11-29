@@ -154,8 +154,8 @@ client.on("message", (message) => {
 
         message.channel.bulkDelete(numeromessaggi, true);
         message.channel.send("Ho eliminato " + numeromessaggi + " messaggi da questo canale")
-        .then(msg => {
-            msg.delete({timeout:3000})
+        .then(message => {
+            message.delete({timeout:3000})
         })
     }
 
