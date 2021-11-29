@@ -139,7 +139,7 @@ client.on("message", (message) => {
             message.channel.send("Non puoi compiere un'azione così nobile!");
             return
         }
-        if(message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+        if(!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
             message.channel.send("Non posso eliminare i messaggi visto che non ho il permesso!");
             return
         }
