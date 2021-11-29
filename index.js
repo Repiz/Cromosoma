@@ -37,6 +37,8 @@ setInterval(function(){
 
 //comando id vanilla, testa o croce
 
+var utenteKick = null;
+
 client.on("message", (message) => {
     if(message.content == ".idvanilla"){
         if(message.member.roles.cache.has("884046793728471070")){
@@ -133,7 +135,7 @@ client.on("message", (message) => {
     }
 
     if(message.content.startsWith(".mod")) {
-        var utenteKick = message.mentions.members.first();
+        utenteKick = message.mentions.members.first();
 
         if(!message.member.hasPermission("KICK_MEMBERS" && "MANAGE_ROLES")) {
             message.channel.send("Cosa vuoi fare senza diritti?");
@@ -226,7 +228,8 @@ client.on("guildMemberRemove", member => {
     canale.setName("🦽┊Membri: " + utentiCount)
 
     //messaggio in #automod quando qualcuno esce dal server
-    client.channels.cache.get("908464001153921064").send(member.toString + "è uscito dal server. Pensa che scarso!")
+    var membroscarso = member.id;
+    client.channels.cache.get("908464001153921064").send("<@" + membroscarso + "> è uscito dal server. Pensa che scarso!")
 })
 
 //bottoni in #regole con reaction roles e messaggio in #ruoli gaming con reaction roles
